@@ -1,0 +1,68 @@
+.profile {
+  margin-top: 36.25px;
+  max-width: 565px;
+}
+
+.profile__user {
+  margin: 0;
+  width: 100%;
+  display: flex;
+  flex-flow: row nowrap;
+  column-gap: 30px;
+}
+
+.profile__picture {
+  background-color: #c4c4c4;
+  border-radius: 50%;
+  justify-self: flex-start;
+  align-self: flex-start;
+  height: 120px;
+}
+
+.profile__details {
+  display: flex ;
+  flex-flow: row wrap;
+  max-width: 415px;
+  row-gap: 10px;
+  column-gap: 18px;
+  justify-content: space-between;
+
+}
+
+.profile__user-name {
+  font-weight: 500;
+  font-size: 42px;
+  line-height: 1.1;
+  max-width: 373px;
+  align-self: flex-end;
+  
+}
+
+.profile__edit-button {
+  
+  padding: 7px;
+  /*border: solid white 1px;*/
+  background-image: url(../images/Edit\ Button.svg);
+  background-position: center;
+  background-color: #000;
+  background-repeat: no-repeat;
+  height: fit-content;
+  padding: 7px;
+  height: 24px;
+  width: 24px;
+  align-self: flex-end;
+  margin-bottom: 7px;
+
+  
+  
+}
+
+.profile__edit-button:hover {
+}
+
+.profile__user-profession {
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 22px;
+  width:100%;
+}
