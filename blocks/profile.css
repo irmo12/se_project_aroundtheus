@@ -20,13 +20,12 @@
 }
 
 .profile__details {
-  display: flex ;
+  display: flex;
   flex-flow: row wrap;
   max-width: 415px;
   row-gap: 10px;
   column-gap: 18px;
   justify-content: space-between;
-
 }
 
 .profile__user-name {
@@ -35,11 +34,9 @@
   line-height: 1.1;
   max-width: 373px;
   align-self: flex-end;
-  
 }
 
 .profile__edit-button {
-  
   padding: 7px;
   /*border: solid white 1px;*/
   background-image: url(../images/Edit\ Button.svg);
@@ -52,17 +49,16 @@
   width: 24px;
   align-self: flex-end;
   margin-bottom: 7px;
-
-  
-  
+  transition: opacity 0.4s ease-in;
 }
 
 .profile__edit-button:hover {
+  opacity: 0.6;
 }
 
 .profile__user-profession {
   font-weight: 400;
   font-size: 18px;
   line-height: 22px;
-  width:100%;
+  width: 100%;
 }
