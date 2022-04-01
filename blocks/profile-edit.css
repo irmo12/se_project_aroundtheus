@@ -1,0 +1,27 @@
+.profile-edit {
+  position: absolute;
+  top: 145px;
+  left: 225px;
+  max-width: 430px;
+  height: 330px;
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  justify-content: space-evenly;
+ 
+}
+
+.profile-edit__heading {
+  font-style: normal;
+  font-weight: 900;
+  font-size: 24px;
+  line-height: 1.2;
+  color: #000000;
+  text-align: left;
+  width: 330px;
+  margin: 0;
+}
+
+.profile-edit__name {
+  
+}
