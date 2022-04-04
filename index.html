@@ -32,59 +32,82 @@
             src="./images/Jacquesprofile.png"
             alt="user profile image"
           />
-          <div class="profile__details">
+          <figure class="profile__details">
             <figcaption class="profile__user-name">Jacques Cousteau</figcaption>
             <button class="profile__edit-button"></button>
             <figcaption class="profile__user-profession">Explorer</figcaption>
-          </div>
+          </figure>
         </figure>
         <button class="button card__add-btn"></button>
       </section>
       <section class="cards">
         <div class="card">
-          <img class="card__img" src="./images/kirill-pershin-1088404-unsplash.png" alt="Yosemite el capitan" />
+          <img
+            class="card__img"
+            src="./images/kirill-pershin-1088404-unsplash.png"
+            alt="Yosemite el capitan"
+          />
           <span class="card__caption">Yosemite Valley</span>
           <button class="card__like-btn"></button>
         </div>
         <div class="card">
-          <img class="card__img" src="./images/kirill-pershin-1404681-unsplash.png" alt="Lake Louise" />
+          <img
+            class="card__img"
+            src="./images/kirill-pershin-1404681-unsplash.png"
+            alt="Lake Louise"
+          />
           <span class="card__caption">Lake Louise</span>
           <button class="card__like-btn"></button>
         </div>
         <div class="card">
-          <img class="card__img" src="./images/kirill-pershin-1556355-unsplash.png" alt="Bald Mountains" />
+          <img
+            class="card__img"
+            src="./images/kirill-pershin-1556355-unsplash.png"
+            alt="Bald Mountains"
+          />
           <span class="card__caption">Bald Mountains</span>
           <button class="card__like-btn"></button>
         </div>
         <div class="card">
-          <img class="card__img" src="/images/kirill-pershin-1404681-unsplash-1.png" alt="Latemar" />
+          <img
+            class="card__img"
+            src="/images/kirill-pershin-1404681-unsplash-1.png"
+            alt="Latemar"
+          />
           <span class="card__caption">Latemar</span>
           <button class="card__like-btn"></button>
         </div>
         <div class="card">
-          <img class="card__img" src="./images/kirill-pershin-1556355-unsplash-1.png" alt="Vanoise National  Park" />
+          <img
+            class="card__img"
+            src="./images/kirill-pershin-1556355-unsplash-1.png"
+            alt="Vanoise National  Park"
+          />
           <span class="card__caption">Vanoise National Park</span>
           <button class="card__like-btn"></button>
         </div>
         <div class="card">
-          <img class="card__img" src="./images/kirill-pershin-1088404-unsplash-1.png" alt="Lago di Braies" />
+          <img
+            class="card__img"
+            src="./images/kirill-pershin-1088404-unsplash-1.png"
+            alt="Lago di Braies"
+          />
           <span class="card__caption">Lago di Braies</span>
           <button class="card__like-btn"></button>
         </div>
       </section>
     </main>
-    <form class="profile-edit">
-      <h2 class="profile-edit__heading">Edit&nbsp;profile</h2>
-      <fieldset class="profile-edit__user">
-        <input type="text" class="profile-edit__field profile-edit__name" />
-        <input
-          type="text"
-          class="profile-edit__field profile-edit__profession"
-        />
-      </fieldset>
-      <button type="submit" class="profile-edit__submit">Save</button>
-      <button type="button" class="profile-edit__close"></button>
-    </form>
+    <div class="popup">
+      <form class="profile-edit">
+        <h2 class="profile-edit__heading">Edit&nbsp;profile</h2>
+        <fieldset class="profile-edit__user">
+          <input type="text" class="profile-edit__field profile-edit__name" />
+          <input type="text" class="profile-edit__field profile-edit__about" />
+        </fieldset>
+        <button type="submit" class="profile-edit__submit">Save</button>
+        <button type="button" class="profile-edit__close"></button>
+      </form>
+    </div>
     <footer class="footer"></footer>
     <script src="#"></script>
   </body>
