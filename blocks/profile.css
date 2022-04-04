@@ -39,6 +39,9 @@
   line-height: 1.1;
   max-width: 373px;
   align-self: flex-end;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
 }
 
 .profile__edit-button {
@@ -66,4 +69,7 @@
   font-size: 18px;
   line-height: 22px;
   width: 100%;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
 }
