@@ -27,6 +27,13 @@ function handleEditProfileSave(evt) {
   document.querySelector(".profile__user-about").textContent =
     fieldProfileAbout.value;
 
+  if (fieldProfileName.value == "") {
+    document.querySelector(".profile__user-name").textContent = "Name";
+  }
+  if (fieldProfileAbout.value == "") {
+    document.querySelector(".profile__user-about").textContent = "About me";
+  }
+
   popupProfileEdit.classList.remove("popup__active");
 }
 

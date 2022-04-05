@@ -1,10 +1,11 @@
 .cards {
-  margin-top: 49px;
+  margin: 49px auto 0;
   display: flex;
   max-width: 880px;
   flex-flow: row wrap;
   column-gap: 17px;
   row-gap: 20px;
+  align-self: center;
 }
 
 .card {
@@ -48,4 +49,39 @@
   width: 21px;
   height: 19px;
   margin-right: 18px;
+}
+
+.card__like-btn_active {
+  background-image: url(../images/heartfull.svg);
+}
+
+.card__add-btn {
+  background-image: url(../images/Add\ Button.svg);
+  background-color: #000;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  min-width: 150px;
+  border: none;
+  padding: 14px 64px;
+  transition: opacity 0.4s ease-in;
+}
+
+.card__add-btn:hover {
+  opacity: 0.6;
+}
+
+@media screen and (max-width: 751px) {
+  .card__add-btn {
+    max-height: 50px;
+    flex-basis: 276px;
+    flex-grow: 1;
+  }
+}
+
+@media screen and (max-width: 582px) {
+  .cards {
+    justify-content: center;
+  }
+  
 }
