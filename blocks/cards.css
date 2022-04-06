@@ -78,10 +78,11 @@
     margin-top: 0;
     margin-bottom: 50px;
   }
+ }
 
+ @media screen and (max-width: 788px) {
   .card__add-btn {
-    max-height: 50px;
     width: 280px;
     background-size: 16px;
   }
-}
+ }
