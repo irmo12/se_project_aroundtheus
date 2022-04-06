@@ -7,6 +7,6 @@ For now the user can change their name and about fields only.
 
 Uses js to implement form submition.
 
-link: 
+https://irmo12.github.io/web_project_4/
 
 
