@@ -1,7 +1,8 @@
 .profile-edit {
   position: relative;
-  top: 20%;
-  left: 36%;
+  top: 150px;
+  left: 50%;
+  translate: -50%;
   max-width: 430px;
   display: flex;
   flex-flow: column nowrap;
@@ -72,19 +73,59 @@
   font-style: normal;
   font-weight: 400;
   font-size: 18px;
-  line-height: 1.2;
+  line-height: 1.22;
   text-align: center;
+  transition: opacity 0.4s;
 }
+
+.profile-edit__submit:hover {
+  opacity: 0.8;
+}
+
 .profile-edit__close {
-  background-image: url(../images/Close\ Icon.svg);
+  background-image: url(../images/plus.svg);
+  transform: rotate(-45deg);
   background-position: center;
   background-color: transparent;
   background-repeat: no-repeat;
-  height: 60px;
-  width: 60px;
+  background-size: contain;
+  width: 40px;
+  height: 40px;
   border: 0;
-  background-position: center;
   position: absolute;
-  bottom: 320px;
-  left: 420px;
+  bottom: 330px;
+  right: -7.5%;
+  translate: 7.5%;
+}
+
+@media screen and (max-width: 796px) {
+  .profile-edit {
+    top: 122px;
+    max-width: 282px;
+    margin: 0;
+    padding: 0 22px;
+    row-gap: 0;
+  }
+
+  .profile-edit__heading {
+    font-size: 18px;
+    line-height: 1.22;
+    margin-top: 25px;
+    margin-bottom: 76px;
+  }
+
+  .profile-edit__submit {
+    font-size: 14px;
+    line-height: 1.2;
+    margin-bottom: 25px;
+    max-width: 238px;
+    padding: 14px 100px;
+  }
+  .profile-edit__close {
+    height: 26px;
+    width: 26px;
+    right: 1%;
+    translate: -1%;
+    bottom: 345px;
+  }
 }

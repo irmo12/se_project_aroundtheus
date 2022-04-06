@@ -1,5 +1,5 @@
 .cards {
-  margin: 49px auto 0;
+  margin: 49px auto 68px;
   display: flex;
   max-width: 880px;
   flex-flow: row wrap;
@@ -56,13 +56,14 @@
 }
 
 .card__add-btn {
-  background-image: url(../images/Add\ Button.svg);
+  background-image: url(../images/plus.svg);
   background-color: #000;
   background-position: center;
   background-repeat: no-repeat;
-  background-size: contain;
+  background-size: 22px;
   min-width: 150px;
-  border: none;
+  height: 50px;
+  border: #fff solid 2px;
   padding: 14px 64px;
   transition: opacity 0.4s ease-in;
 }
@@ -71,17 +72,16 @@
   opacity: 0.6;
 }
 
-@media screen and (max-width: 751px) {
+@media screen and (max-width: 875px) {
+  .cards {
+    justify-content: space-evenly;
+    margin-top: 0;
+    margin-bottom: 50px;
+  }
+
   .card__add-btn {
     max-height: 50px;
-    flex-basis: 276px;
-    flex-grow: 1;
+    width: 280px;
+    background-size: 16px;
   }
-}
-
-@media screen and (max-width: 582px) {
-  .cards {
-    justify-content: center;
-  }
-  
 }
