@@ -1,22 +1,22 @@
-let popupProfileEdit = document.querySelector(".popup");
+let popupProfileEdit = document.querySelector(".popup__overlay");
 let buttonEditProfile = document.querySelector(".profile__edit-button");
-let buttonEditProfileClose = document.querySelector(".profile-edit__close");
+let buttonEditProfileClose = document.querySelector(".popup__container-close");
 let formEditProfile = document.querySelector(".profile-edit");
-let fieldProfileName = document.querySelector(".profile-edit__name");
-let fieldProfileAbout = document.querySelector(".profile-edit__about");
+let fieldProfileName = document.querySelector(".profile-edit__field_name");
+let fieldProfileAbout = document.querySelector(".profile-edit__field_about");
 
 function handleEditProfileBtn() {
   let profileName = document.querySelector(".profile__user-name").textContent;
   let profileAbout = document.querySelector(".profile__user-about").textContent;
 
-  popupProfileEdit.classList.add("popup__active");
+  popupProfileEdit.classList.add("popup_active");
 
   fieldProfileName.value = profileName;
   fieldProfileAbout.value = profileAbout;
 }
 
 function handleEditProfileClose() {
-  popupProfileEdit.classList.remove("popup__active");
+  popupProfileEdit.classList.remove("popup_active");
 }
 
 function handleEditProfileSave(evt) {
@@ -34,7 +34,7 @@ function handleEditProfileSave(evt) {
     document.querySelector(".profile__user-about").textContent = "About me";
   }
 
-  popupProfileEdit.classList.remove("popup__active");
+  popupProfileEdit.classList.remove("popup_active");
 }
 
 buttonEditProfile.addEventListener("click", handleEditProfileBtn);

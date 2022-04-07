@@ -23,95 +23,144 @@
         src="./images/aroundtheus.svg"
         alt="around the u.s."
       />
-      <span class="header__divider"></span>
     </header>
     <main class="main">
       <section class="profile">
-        <figure class="profile__user">
+        <div class="profile__user">
           <img
             class="profile__picture"
             src="./images/Jacquesprofile.png"
             alt="user profile image"
           />
-          <figure class="profile__details">
-            <figcaption class="profile__user-name">Jacques Cousteau</figcaption>
-            <button class="profile__edit-button"></button>
-            <div class="profile__user-about">Explorer</div>
-          </figure>
-        </figure>
-        <button class="button card__add-btn"></button>
+          <div class="profile__details">
+            <h2 class="profile__user-name">Jacques Cousteau</h2>
+            <button
+              class="profile__edit-button"
+              type="menu"
+              aria-label="edit profile"
+            ></button>
+            <p class="profile__user-about">Explorer</p>
+          </div>
+        </div>
+        <button
+          class="profile__add-btn"
+          type="button"
+          aria-label="add card"
+        ></button>
       </section>
-      <section class="cards">
-        <div class="card">
+      <section class="gallery">
+        <article class="card">
           <img
             class="card__img"
             src="./images/kirill-pershin-1088404-unsplash.png"
             alt="Yosemite el capitan"
           />
-          <span class="card__caption">Yosemite Valley</span>
-          <button class="card__like-btn"></button>
-        </div>
-        <div class="card">
+          <h2 class="card__caption">Yosemite Valley<h2>
+          <button
+            class="card__like-btn"
+            type="button"
+            aria-label="like"
+          ></button>
+        </article>
+        <article class="card">
           <img
             class="card__img"
             src="./images/kirill-pershin-1404681-unsplash.png"
             alt="Lake Louise"
           />
-          <span class="card__caption">Lake Louise</span>
-          <button class="card__like-btn"></button>
-        </div>
-        <div class="card">
+          <h2 class="card__caption">Lake Louise</h2>
+          <button
+            class="card__like-btn"
+            type="button"
+            aria-label="like"
+          ></button>
+        </article>
+        <article class="card">
           <img
             class="card__img"
             src="./images/kirill-pershin-1556355-unsplash.png"
             alt="Bald Mountains"
           />
-          <span class="card__caption">Bald Mountains</span>
-          <button class="card__like-btn"></button>
-        </div>
-        <div class="card">
+          <h2 class="card__caption">Bald Mountains</h2>
+          <button
+            class="card__like-btn"
+            type="button"
+            aria-label="like"
+          ></button>
+        </article>
+        <article class="card">
           <img
             class="card__img"
-            src="/images/kirill-pershin-1404681-unsplash-1.png"
+            src="./images/kirill-pershin-1404681-unsplash-1.png"
             alt="Latemar"
           />
-          <span class="card__caption">Latemar</span>
-          <button class="card__like-btn"></button>
-        </div>
-        <div class="card">
+          <h2 class="card__caption">Latemar</h2>
+          <button
+            class="card__like-btn"
+            type="button"
+            aria-label="like"
+          ></button>
+        </article>
+        <article class="card">
           <img
             class="card__img"
             src="./images/kirill-pershin-1556355-unsplash-1.png"
-            alt="Vanoise National  Park"
+            alt="Vanoise National Park"
           />
-          <span class="card__caption">Vanoise National Park</span>
-          <button class="card__like-btn"></button>
-        </div>
-        <div class="card">
+          <h2 class="card__caption">Vanoise National Park</h2>
+          <button
+            class="card__like-btn"
+            type="button"
+            aria-label="like"
+          ></button>
+        </article>
+        <article class="card">
           <img
             class="card__img"
             src="./images/kirill-pershin-1088404-unsplash-1.png"
             alt="Lago di Braies"
           />
-          <span class="card__caption">Lago di Braies</span>
-          <button class="card__like-btn card__like-btn_active"></button>
-        </div>
+          <h2 class="card__caption">Lago di Braies</h2>
+          <button
+            class="card__like-btn"
+            type="button"
+            aria-label="like"
+          ></button>
+        </article>
       </section>
     </main>
-    <div class="popup">
-      <form class="profile-edit">
-        <h2 class="profile-edit__heading">Edit&nbsp;profile</h2>
-        <fieldset class="profile-edit__user">
-          <input type="text" class="profile-edit__field profile-edit__name" placeholder="Name" />
-          <input type="text" class="profile-edit__field profile-edit__about" placeholder="About me"/>
-        </fieldset>
-        <button type="submit" class="profile-edit__submit">Save</button>
-        <button type="button" class="profile-edit__close"></button>
-      </form>
+    <div class="popup__overlay">
+      <div class="popup__container">
+        <form name="edit profile" class="profile-edit">
+          <h2 class="profile-edit__heading">Edit&nbsp;profile</h2>
+          <fieldset class="profile-edit__user">
+            <input
+              type="text"
+              class="profile-edit__field profile-edit__field_name"
+              placeholder="Name"
+              name="name"
+            />
+            <input
+              type="text"
+              class="profile-edit__field profile-edit__field_about"
+              placeholder="About me"
+              name="about"
+            />
+          </fieldset>
+          <button type="submit" class="profile-edit__submit">
+            Save
+          </button>
+        </form>
+        <button
+            type="button"
+            class="popup__container-close"
+            aria-label="close"
+          ></button>
+      </div>
     </div>
     <footer class="footer">
       <p class="footer__signature">© 2021 Around the U.S.</p>
     </footer>
-    <script src="./script.js"></script>
+    <script src="./scripts/script.js"></script>
   </body>
 </html>
