@@ -10,9 +10,13 @@
 
 .card__img {
   width: 100%;
+  max-width: 282px;
   min-height: 282px;
+  max-height: 282px;
   background-color: #000;
   align-self: flex-start;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
 }
 
 .card__caption {
@@ -39,17 +43,14 @@
   width: 21px;
   height: 19px;
   margin-right: 18px;
-  transition: opacity .3s;
+  transition: opacity 0.3s;
   cursor: pointer;
 }
 
 .card__like-btn:hover {
-  opacity: .5;
+  opacity: 0.5;
 }
 
 .card__like-btn_active {
   background-image: url(../images/heartfull.svg);
 }
-
-
-

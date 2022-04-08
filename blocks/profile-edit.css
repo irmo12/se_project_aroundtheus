@@ -73,13 +73,16 @@
 }
 
 @media screen and (max-width: 796px) {
-  . .profile-edit__heading {
+  .profile-edit__heading {
     font-size: 18px;
     line-height: 1.22;
     margin-top: 25px;
-    margin-bottom: 76px;
   }
 
+  .profile-edit__inputs {
+    margin-top: 76px;
+    margin-bottom: -3px;
+  }
   .profile-edit__submit {
     font-size: 14px;
     line-height: 1.2;
