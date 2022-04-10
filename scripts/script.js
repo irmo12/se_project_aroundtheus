@@ -1,9 +1,9 @@
-let popupProfileEdit = document.querySelector(".popup__overlay");
+let popupProfileEdit = document.querySelector(".popup");
 let buttonEditProfile = document.querySelector(".profile__edit-button");
 let buttonEditProfileClose = document.querySelector(".popup__container-close");
 let formEditProfile = document.querySelector(".profile-edit");
-let fieldProfileName = document.querySelector(".profile-edit__field_name");
-let fieldProfileAbout = document.querySelector(".profile-edit__field_about");
+let fieldProfileName = document.querySelector(".profile-edit__field_user_name");
+let fieldProfileAbout = document.querySelector(".profile-edit__field_user_about");
 
 function handleEditProfileBtn() {
   let profileName = document.querySelector(".profile__user-name").textContent;
