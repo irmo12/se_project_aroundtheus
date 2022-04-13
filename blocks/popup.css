@@ -5,9 +5,8 @@
   position: fixed;
   left: 0;
   top: 0;
-  justify-content: flex-end;
+  justify-content: center;
   flex-direction: column-reverse;
-  padding-top: 156px;
   align-items: center;
   display: none;
 }
@@ -51,16 +50,15 @@
 @media screen and (max-width: 796px) {
   .popup {
     flex-flow: column-reverse;
-    justify-content: flex-end;
+    justify-content: center;
     align-items: center;
-    padding-top: 77px;
     row-gap: 20px;
   }
   .popup__container {
     max-width: 282px;
     padding: 0 22px;
     row-gap: 0;
-    margin-left: 0;
+    
   }
   .popup__container-close {
     height: 26px;
