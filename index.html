@@ -48,86 +48,7 @@
           aria-label="add card"
         ></button>
       </section>
-      <section class="gallery">
-        <article class="card">
-          <img
-            class="card__img"
-            src="./images/kirill-pershin-1088404-unsplash.png"
-            alt="Yosemite el capitan"
-          />
-          <h2 class="card__caption">Yosemite Valley</h2>
-          <button
-            class="card__like-btn"
-            type="button"
-            aria-label="like"
-          ></button>
-        </article>
-        <article class="card">
-          <img
-            class="card__img"
-            src="./images/kirill-pershin-1404681-unsplash.png"
-            alt="Lake Louise"
-          />
-          <h2 class="card__caption">Lake Louise</h2>
-          <button
-            class="card__like-btn"
-            type="button"
-            aria-label="like"
-          ></button>
-        </article>
-        <article class="card">
-          <img
-            class="card__img"
-            src="./images/kirill-pershin-1556355-unsplash.png"
-            alt="Bald Mountains"
-          />
-          <h2 class="card__caption">Bald Mountains</h2>
-          <button
-            class="card__like-btn"
-            type="button"
-            aria-label="like"
-          ></button>
-        </article>
-        <article class="card">
-          <img
-            class="card__img"
-            src="./images/kirill-pershin-1404681-unsplash-1.png"
-            alt="Latemar"
-          />
-          <h2 class="card__caption">Latemar</h2>
-          <button
-            class="card__like-btn"
-            type="button"
-            aria-label="like"
-          ></button>
-        </article>
-        <article class="card">
-          <img
-            class="card__img"
-            src="./images/kirill-pershin-1556355-unsplash-1.png"
-            alt="Vanoise National Park"
-          />
-          <h2 class="card__caption">Vanoise National Park</h2>
-          <button
-            class="card__like-btn"
-            type="button"
-            aria-label="like"
-          ></button>
-        </article>
-        <article class="card">
-          <img
-            class="card__img"
-            src="./images/kirill-pershin-1088404-unsplash-1.png"
-            alt="Lago di Braies"
-          />
-          <h2 class="card__caption">Lago di Braies</h2>
-          <button
-            class="card__like-btn"
-            type="button"
-            aria-label="like"
-          ></button>
-        </article>
-      </section>
+      <section class="gallery"></section>
     </main>
     <div class="popup">
       <div class="popup__container">
@@ -159,6 +80,13 @@
     <footer class="footer">
       <p class="footer__signature">© 2021 Around the U.S.</p>
     </footer>
+    <template id="card">
+      <article class="card">
+        <img class="card__img" src="#" alt="#" />
+        <h2 class="card__caption"></h2>
+        <button class="card__like-btn" type="button" aria-label="like"></button>
+      </article>
+    </template>
     <script src="./scripts/script.js"></script>
   </body>
 </html>
