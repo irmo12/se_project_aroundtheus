@@ -40,7 +40,7 @@
   font-size: 42px;
   line-height: 1.1;
   max-width: 373px;
-  align-self: flex-end;
+  align-self: flex-start;
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
@@ -52,6 +52,7 @@
   font-size: 18px;
   line-height: 22px;
   max-width: 373px;
+  width: 100%;
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
@@ -70,7 +71,6 @@
   align-self: center;
   transition: opacity 0.4s ease-in;
   cursor: pointer;
-  margin-top: 24px;
 }
 
 .profile__edit-button:hover {
