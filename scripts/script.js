@@ -43,10 +43,16 @@ function populateInitial(cardsArr = initialCards) {
     const cardElement = cardTemplate.querySelector(".card").cloneNode(true);
     const cardImg = cardElement.querySelector(".card__img");
     const cardTitle = cardElement.querySelector(".card__caption");
+    const btnLike = cardElement.querySelector('.card__like-btn'); 
 
     cardImg.setAttribute("src", card.src);
     cardImg.setAttribute("alt", card.alt);
     cardTitle.textContent = card.name;
+
+       
+    btnLike.addEventListener('click', function (evt) {
+    evt.target.classList.toggle('card__like-btn_active')
+    });
 
     gallery.append(cardElement);
   });
@@ -114,7 +120,7 @@ function handleAddCard() {
 
   fieldProfileName.value = "Title"
   fieldProfileAbout.value = "Image link"
-
+  
   popup.prepend(popupElement);
 
   function handleEditProfileSave(evt) {
@@ -129,6 +135,8 @@ function handleAddCard() {
     populateInitial(cardInput);
     popup.classList.remove("popup_active");
     popupElement.remove();
+  
+    
   }
 
   formEditProfile.addEventListener("submit", handleEditProfileSave);
@@ -139,6 +147,13 @@ function handleEditProfileClose() {
   popupElement.remove();
 }
 
+  
+
+
+                                                                          //function for del card
+
+                                                                          //fnc for img popup
 buttonEditProfile.addEventListener("click", handleEditProfileBtn);
 buttonAddCard.addEventListener('click', handleAddCard);
 buttonPopupClose.addEventListener("click", handleEditProfileClose);
+

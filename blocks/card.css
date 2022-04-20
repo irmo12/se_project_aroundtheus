@@ -2,10 +2,12 @@
   display: flex;
   flex-flow: row wrap;
   max-width: calc((880px - (2 * 17px)) / 3);
+  width: 100%;
   justify-content: space-between;
   align-items: center;
   background-color: #fff;
   border-radius: 10px;
+  position: relative;
 }
 
 .card__img {
@@ -17,6 +19,30 @@
   align-self: flex-start;
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
+  display: block;
+}
+
+.card__trash {
+  z-index: 5;
+  background-image: url(../images/Trash.svg);
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  position: absolute;
+  background-color: transparent;
+  border: 0;
+  box-shadow: none;
+  color: #fff;
+  width: 18px;
+  height: 19.3px;
+  top: 18px;
+  right: 23.8px;
+  transition: opacity 0.3s;
+  cursor: pointer;
+}
+
+.card__trash:hover {
+  opacity: 0.6;
 }
 
 .card__caption {
@@ -30,7 +56,6 @@
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
-  
 }
 
 .card__like-btn {
@@ -45,6 +70,7 @@
   height: 19px;
   margin-right: 18px;
   transition: opacity 0.3s;
+  transition: background-image 0.4s;
   cursor: pointer;
 }
 
