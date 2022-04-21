@@ -38,26 +38,32 @@ const initialCards = [
 const gallery = document.querySelector(".gallery");
 const cardTemplate = document.querySelector("#card").content;
 
-function populateInitial(cardsArr = initialCards) {
+function populate(cardsArr = initialCards) {
   cardsArr.forEach(function (card) {
     const cardElement = cardTemplate.querySelector(".card").cloneNode(true);
     const cardImg = cardElement.querySelector(".card__img");
     const cardTitle = cardElement.querySelector(".card__caption");
-    const btnLike = cardElement.querySelector('.card__like-btn'); 
+    const btnLike = cardElement.querySelector(".card__like-btn");
+    const btnTrash = cardElement.querySelector('.card__trash');
 
     cardImg.setAttribute("src", card.src);
     cardImg.setAttribute("alt", card.alt);
     cardTitle.textContent = card.name;
 
-       
-    btnLike.addEventListener('click', function (evt) {
-    evt.target.classList.toggle('card__like-btn_active')
+    btnLike.addEventListener("click", function(evt) {
+      evt.target.classList.toggle("card__like-btn_active");
     });
+
+    btnTrash.addEventListener("click", function(evt) {
+      evt.target.closest('.card').remove();
+    });
+
+    cardImg.addEventListener("click", hanldeImgClick);
 
     gallery.append(cardElement);
   });
 }
-populateInitial(initialCards);
+populate(initialCards);
 
 function handleEditProfileBtn() {
   let profileName = document.querySelector(".profile__user-name").textContent;
@@ -111,6 +117,7 @@ function handleAddCard() {
   popup.classList.add("popup_active");
 
   let formEditProfile = popupElement.querySelector(".profile-edit");
+  let formHeading = popupElement.querySelector('.profile-edit__heading')
   let fieldProfileName = popupElement.querySelector(
     ".profile-edit__field_user_name"
   );
@@ -118,42 +125,43 @@ function handleAddCard() {
     ".profile-edit__field_user_about"
   );
 
-  fieldProfileName.value = "Title"
-  fieldProfileAbout.value = "Image link"
-  
+  formHeading.textContent = "New place";
+  fieldProfileName.value = "Title";
+  fieldProfileAbout.value = "Image link";
+
   popup.prepend(popupElement);
 
   function handleEditProfileSave(evt) {
     evt.preventDefault();
-    let cardInput = [ 
-     {
+    let cardInput = [
+      {
         name: fieldProfileName.value,
         src: fieldProfileAbout.value,
         alt: fieldProfileName.value,
-     }
-    ];   
-    populateInitial(cardInput);
+      },
+    ];
+    populate(cardInput);
     popup.classList.remove("popup_active");
     popupElement.remove();
-  
-    
   }
-
   formEditProfile.addEventListener("submit", handleEditProfileSave);
 }
+
 
 function handleEditProfileClose() {
   popup.classList.remove("popup_active");
   popupElement.remove();
 }
 
-  
+function hanldeImgClick(evt) {
+  const
+  const
 
+  popup.classList.add('popup_active');
 
-                                                                          //function for del card
+}
 
-                                                                          //fnc for img popup
 buttonEditProfile.addEventListener("click", handleEditProfileBtn);
-buttonAddCard.addEventListener('click', handleAddCard);
+buttonAddCard.addEventListener("click", handleAddCard);
 buttonPopupClose.addEventListener("click", handleEditProfileClose);
 

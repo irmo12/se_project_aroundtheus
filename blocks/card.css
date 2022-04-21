@@ -23,7 +23,6 @@
 }
 
 .card__trash {
-  z-index: 5;
   background-image: url(../images/Trash.svg);
   background-position: center;
   background-size: cover;
