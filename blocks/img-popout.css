@@ -1,8 +1,16 @@
 .img-popout {
-
 }
 
 .img-popout__img {
-    max-width: 75vw;
-    max-height: 75vh;
+  max-width: 75vw;
+  max-height: 75vh;
+}
+
+.img-popout__caption {
+  
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 1.25;
+  color: #ffffff;
 }

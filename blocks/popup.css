@@ -36,7 +36,6 @@
   height: 40px;
   border: 0;
   transition: opacity 0.3s;
-  margin-left: 468px;
 }
 
 .popup__container-close:hover {
@@ -52,18 +51,14 @@
     flex-flow: column-reverse;
     justify-content: center;
     align-items: center;
-    row-gap: 20px;
   }
   .popup__container {
     max-width: 282px;
     padding: 0 22px;
-    row-gap: 0;
-    
   }
   .popup__container-close {
     height: 26px;
     width: 26px;
-    margin-left: 247px;
     
   }
 }
