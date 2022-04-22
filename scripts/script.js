@@ -93,9 +93,9 @@ function handleEditProfileBtn() {
 
   fieldProfileName.value = profileName;
   fieldProfileAbout.value = profileAbout;
-
   popup.prepend(popupElement);
-  let formWidth = popupElement.offsetWidth;
+
+  const formWidth = popupElement.offsetWidth;
   if (mediaQuery.matches) {
     buttonPopupClose.setAttribute("style", "margin: 0 0 20px 80vw;");
   } else {
