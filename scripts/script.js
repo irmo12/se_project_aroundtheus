@@ -21,12 +21,12 @@ const initialCards = [
   },
   {
     name: "Lake Louise",
-    src: "./images/unsplashtst/wil-stewart-T26KCgCPsCI-unsplash.jpg",
+    src: "./images/kirill-pershin-1404681-unsplash.png",
     alt: "Lake Louise",
   },
   {
     name: "Bald Mountains",
-    src: "./images/unsplashtst/craig-strahorn--UmCb7gAAUI-unsplash.jpg",
+    src: "./images/kirill-pershin-1556355-unsplash.png",
     alt: "Bald Mountains",
   },
   {
@@ -74,6 +74,10 @@ function populate(cardsArr = initialCards) {
 populate(initialCards);
 
 function handleEditProfileBtn() {
+  if (!!popupElement) {popupElement.remove()};
+  if(!!imgElement) {imgElement.remove()};
+
+  popupElement.querySelector(".profile-edit__heading").textContent = 'Edit profile';
   let profileName = document.querySelector(".profile__user-name").textContent;
   let profileAbout = document.querySelector(".profile__user-about").textContent;
 
@@ -116,12 +120,16 @@ function handleEditProfileBtn() {
     }
 
     popup.classList.remove("popup_active");
-    popupElement.remove();
+    
   }
   formEditProfile.addEventListener("submit", handleEditProfileSave);
 }
 
 function handleAddCard() {
+  if (!!popupElement) {popupElement.remove()};
+  if(!!imgElement) {imgElement.remove()};
+
+
   popupTemplate = document.querySelector("#popup-template").content;
   popupElement = popupTemplate
     .querySelector(".popup__container")
@@ -141,6 +149,7 @@ function handleAddCard() {
   fieldProfileName.value = "Title";
   fieldProfileAbout.value = "Image link";
 
+  
   popup.prepend(popupElement);
   let formWidth = popupElement.offsetWidth;
   if (mediaQuery.matches) {
@@ -163,20 +172,24 @@ function handleAddCard() {
     ];
     populate(cardInput);
     popup.classList.remove("popup_active");
-    popupElement.remove();
+    
   }
   formEditProfile.addEventListener("submit", handleEditProfileSave);
 }
 
 function hanldeImgClick(evt) {
+  if (!!popupElement) {popupElement.remove()};
+  if(!!imgElement) {imgElement.remove()};
+
   const img = imgElement.querySelector(".img-popout__img");
   const cap = imgElement.querySelector(".img-popout__caption");
 
   img.setAttribute("src", evt.target.getAttribute("src"));
-  cap.setAttribute("alt", evt.target.getAttribute("alt"));
+  cap.textContent = evt.target.getAttribute("alt");
 
   popup.classList.add("popup_active");
   popup.prepend(imgElement);
+
   let width = img.offsetWidth;
   buttonPopupClose.setAttribute(
     "style",
@@ -184,14 +197,8 @@ function hanldeImgClick(evt) {
   );
 }
 
-function handleEditProfileClose(evt) {
+function handleEditProfileClose() {
   popup.classList.remove("popup_active");
-  if (!!popupElement) {
-    popupElement.remove();
-  }
-  if (!!imgElement) {
-    imgElement.remove();
-  }
 }
 
 buttonEditProfile.addEventListener("click", handleEditProfileBtn);

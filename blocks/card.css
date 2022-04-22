@@ -8,6 +8,8 @@
   background-color: #fff;
   border-radius: 10px;
   position: relative;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
 }
 
 .card__img {
@@ -17,8 +19,6 @@
   max-height: 282px;
   background-color: #000;
   align-self: flex-start;
-  border-top-left-radius: 10px;
-  border-top-right-radius: 10px;
   display: block;
 }
 
