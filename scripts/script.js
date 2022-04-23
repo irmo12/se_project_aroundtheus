@@ -46,8 +46,12 @@ const initialCards = [
 ];
 
 function clearClone() {
-  if (!!popupElement) {popupElement.remove()};
-  if(!!imgElement) {imgElement.remove()};
+  if (!!popupElement) {
+    popupElement.remove();
+  }
+  if (!!imgElement) {
+    imgElement.remove();
+  }
 }
 
 function popupOpen() {
@@ -58,7 +62,7 @@ function popupClose() {
   popup.classList.remove("popup_active");
 }
 
-function setXMargin (width) {
+function setXMargin(width) {
   if (mediaQuery.matches) {
     buttonPopupClose.setAttribute("style", "margin: 0 0 20px 80vw;");
   } else {
@@ -68,7 +72,6 @@ function setXMargin (width) {
     );
   }
 }
-
 
 function populate(cardsArr = initialCards) {
   cardsArr.forEach(function (card) {
@@ -100,9 +103,12 @@ populate(initialCards);
 function handleEditProfileBtn() {
   clearClone();
 
-  popupElement.querySelector(".profile-edit__heading").textContent = 'Edit profile';
+  popupElement.querySelector(".profile-edit__heading").textContent =
+    "Edit profile";
   const profileName = document.querySelector(".profile__user-name").textContent;
-  const profileAbout = document.querySelector(".profile__user-about").textContent;
+  const profileAbout = document.querySelector(
+    ".profile__user-about"
+  ).textContent;
 
   popupOpen();
 
@@ -137,7 +143,6 @@ function handleEditProfileBtn() {
     }
 
     popupClose();
-    
   }
   formEditProfile.addEventListener("submit", handleEditProfileSave);
 }
@@ -175,21 +180,21 @@ function handleAddCard() {
     ];
     populate(cardInput);
     popupClose();
-    
   }
   formEditProfile.addEventListener("submit", handleEditProfileSave);
 }
 
 function hanldeImgClick(evt) {
   clearClone();
+
   const img = imgElement.querySelector(".img-popout__img");
   const cap = imgElement.querySelector(".img-popout__caption");
 
   img.setAttribute("src", evt.target.getAttribute("src"));
   cap.textContent = evt.target.getAttribute("alt");
 
-  popupOpen();
   popup.prepend(imgElement);
+  popupOpen();
 
   const width = img.offsetWidth;
   setXMargin(width);

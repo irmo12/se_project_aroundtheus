@@ -12,7 +12,7 @@
   opacity: 0;
   display: flex;
   visibility: hidden;
-  transition: opacity .4s ease-in, visibility 0ms ease-in .4s
+  transition: opacity .4s ease-in, visibility 0ms ease-in .4s;
 }
 
 .popup__container {

@@ -59,7 +59,6 @@
 }
 
 .profile__edit-button {
-  border: 0;
   padding: 7px;
   background-image: url(../images/pen.svg);
   background-position: center;
