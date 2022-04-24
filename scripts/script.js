@@ -1,15 +1,13 @@
-const buttonEditProfile = document.querySelector(".profile__edit-button");
-const buttonAddCard = document.querySelector(".profile__add-btn");
-const popup = document.querySelector(".popup");
-const buttonPopupClose = popup.querySelector(".popup__container-close");
-const imgTemplate = document.querySelector("#imgPopout").content;
-const imgElement = imgTemplate.querySelector(".img-popout").cloneNode(true);
+const btnEditProfile = document.querySelector(".profile__edit-button");
+const btnAddCard = document.querySelector(".profile__add-btn");
+const profilePopup = document.querySelector("#profilePopup");
+const addCardPopup = document.querySelector("#addCardPopup");
+const imgPopup = document.querySelector('#imgPopup')
+const btnPopupClose = popup.querySelector(".popup__container-close");
+const imgElement = imgTemplate.querySelector(".img-popout")
 const gallery = document.querySelector(".gallery");
 const cardTemplate = document.querySelector("#card").content;
-const popupTemplate = document.querySelector("#popup-template").content;
-const popupElement = popupTemplate
-  .querySelector(".popup__container")
-  .cloneNode(true);
+const popupElement = document.querySelector(".popup__container")
 const mediaQuery = window.matchMedia("(max-width: 796px)");
 
 const initialCards = [
@@ -45,16 +43,7 @@ const initialCards = [
   },
 ];
 
-function clearClone() {
-  if (!!popupElement) {
-    popupElement.remove();
-  }
-  if (!!imgElement) {
-    imgElement.remove();
-  }
-}
-
-function popupOpen() {
+function popupOpen(id) {
   popup.classList.add("popup_active");
 }
 
@@ -73,7 +62,7 @@ function setXMargin(width) {
   }
 }
 
-function populate(cardsArr = initialCards) {
+function renderCards(cardsArr = initialCards) {
   cardsArr.forEach(function (card) {
     const cardElement = cardTemplate.querySelector(".card").cloneNode(true);
     const cardImg = cardElement.querySelector(".card__img");
@@ -98,7 +87,7 @@ function populate(cardsArr = initialCards) {
     gallery.append(cardElement);
   });
 }
-populate(initialCards);
+renderCards(initialCards);
 
 function handleEditProfileBtn() {
   clearClone();

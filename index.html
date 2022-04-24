@@ -48,40 +48,80 @@
           aria-label="add card"
         ></button>
       </section>
+      <div class="popup" id="profilePopup">
+        <button
+          type="button"
+          class="popup__container-close"
+          aria-label="close"
+        ></button>
+        <div class="popup__container">
+          <form name="edit profile" class="popup-edit">
+            <h2 class="popup-edit__heading">Edit&nbsp;profile</h2>
+            <fieldset class="popup-edit__inputs">
+              <input
+                type="text"
+                class="popup-edit__field popup-edit__field_user_name"
+                placeholder="Name"
+                name="name"
+              />
+              <input
+                type="text"
+                class="popup-edit__field popup-edit__field_user_about"
+                placeholder="About me"
+                name="about"
+              />
+            </fieldset>
+            <button type="submit" class="popup-edit__submit">Save</button>
+          </form>
+        </div>
+      </div>
+
+      <div class="popup" id="addCardPopup">
+        <button
+          type="button"
+          class="popup__container-close"
+          aria-label="close"
+        ></button>
+        <div class="popup__container">
+          <form name="add card" class="popup-edit">
+            <h2 class="popup-edit__heading">New&nbsp;place</h2>
+            <fieldset class="popup-edit__inputs">
+              <input
+                type="text"
+                class="popup-edit__field"
+                placeholder="Title"
+                name="Title"
+              />
+              <input
+                type="text"
+                class="popup-edit__field popup-edit__field_place_link"
+                placeholder="Image link"
+                name="imgLink"/>
+            </fieldset>
+            <button type="submit" class="popup-edit__submit">Create</button>
+          </form>
+        </div>
+      </div>
+
+      <div class="popup" id="imgPopup">
+        <button
+          type="button"
+          class="popup__container-close"
+          aria-label="close"
+        ></button>
+        <div class="img-popout">
+          <img class="img-popout__img" src="#" alt="#" />
+          <span class="img-popout__caption"></span>
+        </div>
+      </div>
+
       <section class="gallery"></section>
     </main>
-    <div class="popup">
-      <button
-        type="button"
-        class="popup__container-close"
-        aria-label="close"
-      ></button>
-    </div>
+      
     <footer class="footer">
       <p class="footer__signature">© 2021 Around the U.S.</p>
     </footer>
-    <template id="popup-template">
-      <div class="popup__container">
-        <form name="edit profile" class="profile-edit">
-          <h2 class="profile-edit__heading">Edit&nbsp;profile</h2>
-          <fieldset class="profile-edit__inputs">
-            <input
-              type="text"
-              class="profile-edit__field profile-edit__field_user_name"
-              placeholder="Name"
-              name="name"
-            />
-            <input
-              type="text"
-              class="profile-edit__field profile-edit__field_user_about"
-              placeholder="About me"
-              name="about"
-            />
-          </fieldset>
-          <button type="submit" class="profile-edit__submit">Save</button>
-        </form>
-      </div>
-    </template>
+
     <template id="card">
       <article class="card">
         <img class="card__img" src="#" alt="#" />
@@ -90,12 +130,8 @@
         <button class="card__like-btn" type="button" aria-label="like"></button>
       </article>
     </template>
-    <template id="imgPopout">
-      <div class="img-popout">
-        <img class="img-popout__img" src="#" alt="#" />
-        <span class="img-popout__caption"></span>
-      </div>
-    </template>
+    
+      
     <script src="./scripts/script.js"></script>
   </body>
 </html>
