@@ -48,15 +48,31 @@ function closePopup(id) {
   id.classList.remove("popup_active");
 }
 
-function setXMargin(width) {
-  if (mediaQuery.matches) {
-    buttonPopupClose.setAttribute("style", "margin: 0 0 20px 80vw;");
-  } else {
-    buttonPopupClose.setAttribute(
-      "style",
-      `margin-left: calc(${width}px + 36px);`
-    );
-  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+function handleAddCardSubmit(evt) {
+  evt.preventDefault();
+  fillCardForm();
+  closePopup(addCardPopup);
+  evt.target.closest(".popup-edit").reset();
 }
 
 function createCard(card) {
@@ -86,7 +102,7 @@ function renderCards(cardsArr = initialCards) {
 }
 
 function handleLikeBtn (evt) {
-  evt.target.classList.tevtoggle("card__like-btn_active");
+  evt.target.classList.toggle("card__like-btn_active");
 }
 
 function handleTrashBtn(evt) {
@@ -94,7 +110,7 @@ function handleTrashBtn(evt) {
 }
 
 function fillCardForm(); {
-  const fieldPlaceTitle = addCardPopup.querySelector('input[name='Title']');
+  const fieldPlaceTitle = addCardPopup.querySelector("input[name='Title']");
   const fieldPlaceLink = addCardPopup.querySelector(".popup-edit__field_place_link");
  
   const cardInput = [
@@ -107,12 +123,7 @@ function fillCardForm(); {
   renderCard(cardInput);
 }
   
-function handleAddCardSubmit(evt) {
-  evt.preventDefault();
-  fillCardForm();
-  closePopup(addCardPopup);
 
-}
 
 
 
