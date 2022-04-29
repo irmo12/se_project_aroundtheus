@@ -7,14 +7,19 @@ const imgPopup = document.querySelector("#imgPopup");
 const gallery = document.querySelector(".gallery");
 const cardTemplate = document.querySelector("#card").content;
 const mediaQuery = window.matchMedia("(max-width: 796px)");
-const btnPopupClose = document.querySelector(".popup__container-close");
+const btnProfilePopupClose = profilePopup.querySelector(".popup__container-close");
+const btnAddCardPopoupClose = addCardPopup.querySelector(".popup__container-close");
+const btnImgPopupClose = imgPopup.querySelector(".popup__container-close");
 let fieldProfileName = profilePopup.querySelector(
   ".popup-edit__field_user_name"
 );
 let fieldProfileAbout = profilePopup.querySelector(
   ".popup-edit__field_user_about"
 );
-
+let profileName = profileUser.querySelector(".profile__user-name").textContent;
+let profileAbout = profileUser.querySelector(
+  ".profile__user-about"
+).textContent;
 const initialCards = [
   {
     name: "Yosemite Valley",
@@ -57,31 +62,29 @@ function closePopup(id) {
 }
 
 function fillProfileForm() {
-  profileUser.querySelector(".profile__user-name").textContent =
-    fieldProfileName.value;
-  profileUser.querySelector(".profile__user-about").textContent =
-    fieldProfileAbout.value;
+  profileName = fieldProfileName.value;
+  profileAbout = fieldProfileAbout.value;
 }
 
 function setProfilePlaceholders() {
-  profilePopup
-    .querySelector(".popup-edit__field_user_name")
-    .setAttribute("placeholder", `${fieldProfileName.value}`);
-  profileUser
-    .querySelector(".profile__user-about")
-    .setAttribute("placeholder", `${fieldProfileAbout.value}`);
+  if (!!profileName) {
+    fieldProfileName.setAttribute("placeholder", `${profileName}`);
+  }
+  if (!!profileAbout) {
+    fieldProfileAbout.setAttribute("placeholder", `${profileAbout}`);
+  }
 }
 
 function handleEditProfileSave(evt) {
   evt.preventDefault();
   fillProfileForm();
   closePopup(profilePopup);
-  setProfilePlaceholders();
   evt.target.closest(".popup-edit").reset();
 }
 
 function handleEditProfileBtn() {
   setProfilePlaceholders();
+
   openPopup(profilePopup);
 }
 
@@ -162,16 +165,18 @@ function hanldeImgClick(evt) {
 
 btnEditProfile.addEventListener("click", handleEditProfileBtn);
 btnAddCard.addEventListener("click", handleAddCard);
-btnPopupClose.addEventListener("click", function (evt) {
+btnProfilePopupClose.addEventListener("click", function (evt) {
   closePopup(evt.target.closest(".popup"));
 });
-btnAddCard.addEventListener("click", handleAddCard);
-
-profilePopup
-  .querySelector(".popup-edit__submit")
-  .addEventListener("submit", handleEditProfileSave);
+btnAddCardPopoupClose.addEventListener("click", function (evt) {
+  closePopup(evt.target.closest(".popup"))});
+btnImgPopupClose.addEventListener("click", function (evt) {
+  closePopup(evt.target.closest(".popup"))});
 addCardPopup
   .querySelector(".popup-edit__submit")
   .addEventListener("submit", handleAddCardSubmit);
+profilePopup
+  .querySelector(".popup-edit__submit")
+  .addEventListener("submit", handleEditProfileSave);
 
 renderCards(initialCards);
