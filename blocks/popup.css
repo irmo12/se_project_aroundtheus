@@ -42,6 +42,7 @@
   border: 0;
   margin-left: 470px;
   transition: opacity 0.3s;
+  cursor: pointer;
 }
 
 .popup__container-close:hover {

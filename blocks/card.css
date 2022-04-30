@@ -20,6 +20,7 @@
   background-color: #000;
   align-self: flex-start;
   display: block;
+  cursor: pointer;
 }
 
 .card__trash {
