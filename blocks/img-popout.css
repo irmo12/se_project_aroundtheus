@@ -1,7 +1,6 @@
 .img-popout {
   display: flex;
   flex-flow: column nowrap;
-  margin: 0 auto;
 }
 
 .img-popout__img {

@@ -6,11 +6,11 @@
   left: 0;
   top: 0;
   justify-content: center;
-  flex-flow: column nowrap;
   align-items: center;
   overflow: hidden;
   opacity: 0;
   display: flex;
+  flex-flow: column nowrap;
   visibility: hidden;
   transition: opacity .4s ease-in, visibility 0ms ease-in .4s;
   z-index: 5;
@@ -31,7 +31,9 @@
 }
 
 .popup__container_img {
-  width: unset;
+  max-width: unset;
+  display: flex;
+  flex-flow: column nowrap;
 }
 
 .popup__container-close {
@@ -49,6 +51,11 @@
   cursor: pointer;
 }
 
+.popup__container-close_img {
+  margin: 0;
+  align-self: flex-end;
+}
+
 .popup__container-close:hover {
   opacity: 0.6;
 }
@@ -60,11 +67,7 @@
 }
 
 @media screen and (max-width: 796px) {
-  .popup {
-    flex-flow: column nowrap;
-    justify-content: center;
-    align-items: center;
-  }
+  
   .popup__container {
     max-width: 282px;
     padding: 0 22px;
