@@ -7,19 +7,22 @@ const imgPopup = document.querySelector("#imgPopup");
 const gallery = document.querySelector(".gallery");
 const cardTemplate = document.querySelector("#card").content;
 const mediaQuery = window.matchMedia("(max-width: 796px)");
-const btnProfilePopupClose = profilePopup.querySelector(".popup__container-close");
-const btnAddCardPopoupClose = addCardPopup.querySelector(".popup__container-close");
+const btnProfilePopupClose = profilePopup.querySelector(
+  ".popup__container-close"
+);
+const btnAddCardPopoupClose = addCardPopup.querySelector(
+  ".popup__container-close"
+);
 const btnImgPopupClose = imgPopup.querySelector(".popup__container-close");
-let fieldProfileName = profilePopup.querySelector(
+const profileName = profileUser.querySelector(".profile__user-name");
+const profileAbout = profileUser.querySelector(".profile__user-about");
+const fieldProfileName = profilePopup.querySelector(
   ".popup-edit__field_user_name"
 );
-let fieldProfileAbout = profilePopup.querySelector(
+const fieldProfileAbout = profilePopup.querySelector(
   ".popup-edit__field_user_about"
 );
-let profileName = profileUser.querySelector(".profile__user-name").textContent;
-let profileAbout = profileUser.querySelector(
-  ".profile__user-about"
-).textContent;
+
 const initialCards = [
   {
     name: "Yosemite Valley",
@@ -62,29 +65,25 @@ function closePopup(id) {
 }
 
 function fillProfileForm() {
-  profileName = fieldProfileName.value;
-  profileAbout = fieldProfileAbout.value;
-}
-
-function setProfilePlaceholders() {
-  if (!!profileName) {
-    fieldProfileName.setAttribute("placeholder", `${profileName}`);
-  }
-  if (!!profileAbout) {
-    fieldProfileAbout.setAttribute("placeholder", `${profileAbout}`);
-  }
+  profileName.textContent = fieldProfileName.value;
+  console.log(profileName);
+  profileAbout.textContent = fieldProfileAbout.value;
 }
 
 function handleEditProfileSave(evt) {
   evt.preventDefault();
   fillProfileForm();
   closePopup(profilePopup);
-  evt.target.closest(".popup-edit").reset();
+  evt.reset();
+}
+
+function readProfile() {
+  fieldProfileName.value = profileName.textContent;
+  fieldProfileAbout.value =profileAbout.textContent;
 }
 
 function handleEditProfileBtn() {
-  setProfilePlaceholders();
-
+  readProfile();
   openPopup(profilePopup);
 }
 
@@ -169,14 +168,16 @@ btnProfilePopupClose.addEventListener("click", function (evt) {
   closePopup(evt.target.closest(".popup"));
 });
 btnAddCardPopoupClose.addEventListener("click", function (evt) {
-  closePopup(evt.target.closest(".popup"))});
+  closePopup(evt.target.closest(".popup"));
+});
 btnImgPopupClose.addEventListener("click", function (evt) {
-  closePopup(evt.target.closest(".popup"))});
+  closePopup(evt.target.closest(".popup"));
+});
 addCardPopup
-  .querySelector(".popup-edit__submit")
+  .querySelector(".popup-edit")
   .addEventListener("submit", handleAddCardSubmit);
 profilePopup
-  .querySelector(".popup-edit__submit")
+  .querySelector(".popup-edit")
   .addEventListener("submit", handleEditProfileSave);
 
 renderCards(initialCards);
