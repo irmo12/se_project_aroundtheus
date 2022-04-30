@@ -30,6 +30,10 @@
   box-sizing: border-box;
 }
 
+.popup__container_img {
+  width: unset;
+}
+
 .popup__container-close {
   background-image: url(../images/plus.svg);
   transform: rotate(-45deg);
@@ -48,7 +52,7 @@
 .popup__container-close:hover {
   opacity: 0.6;
 }
-
+ 
 .popup_active {
   visibility: visible;
   opacity: 1;
