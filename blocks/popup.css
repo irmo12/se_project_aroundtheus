@@ -31,7 +31,7 @@
 }
 
 .popup__container_img {
-  max-width: unset;
+  max-width: 90vw;
   display: flex;
   flex-flow: column nowrap;
 }

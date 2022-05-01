@@ -56,34 +56,32 @@ const initialCards = [
   },
 ];
 
-function openPopup(id) {
-  id.classList.add("popup_active");
+function openPopup(popupType) {
+  popupType.classList.add("popup_active");
 }
 
-function closePopup(id) {
-  id.classList.remove("popup_active");
+function closePopup(popupType) {
+  popupType.classList.remove("popup_active");
 }
 
-function fillProfileForm() {
+function fillProfileInfo() {
   profileName.textContent = fieldProfileName.value;
-  console.log(profileName);
   profileAbout.textContent = fieldProfileAbout.value;
 }
 
 function handleEditProfileSave(evt) {
   evt.preventDefault();
-  fillProfileForm();
+  fillProfileInfo();
   closePopup(profilePopup);
-  evt.reset();
 }
 
-function readProfile() {
+function fillProfileForm() {
   fieldProfileName.value = profileName.textContent;
-  fieldProfileAbout.value =profileAbout.textContent;
+  fieldProfileAbout.value = profileAbout.textContent;
 }
 
 function handleEditProfileBtn() {
-  readProfile();
+  fillProfileForm();
   openPopup(profilePopup);
 }
 
@@ -111,7 +109,7 @@ function renderCard(card) {
 }
 
 function renderCards(cardsArr = initialCards) {
-  cardsArr.forEach((card) => renderCard(card));
+  cardsArr.forEach(renderCard);
 }
 
 function handleLikeBtn(evt) {
@@ -151,10 +149,11 @@ function handleAddCard() {
 
 function setPopoutImg(evt) {
   const img = imgPopup.querySelector(".img-popout__img");
-  const cap = imgPopup.querySelector(".img-popout__caption");
+  const caption = imgPopup.querySelector(".img-popout__caption");
 
   img.setAttribute("src", evt.target.getAttribute("src"));
-  cap.textContent = evt.target.getAttribute("alt");
+  img.setAttribute('alt', `${evt.target.getAttribute("alt")}`)
+  caption.textContent = evt.target.getAttribute("alt");
 }
 
 function hanldeImgClick(evt) {
@@ -165,13 +164,13 @@ function hanldeImgClick(evt) {
 btnEditProfile.addEventListener("click", handleEditProfileBtn);
 btnAddCard.addEventListener("click", handleAddCard);
 btnProfilePopupClose.addEventListener("click", function (evt) {
-  closePopup(evt.target.closest(".popup"));
+  closePopup(profilePopup);
 });
 btnAddCardPopoupClose.addEventListener("click", function (evt) {
-  closePopup(evt.target.closest(".popup"));
+  closePopup(addCardPopup);
 });
 btnImgPopupClose.addEventListener("click", function (evt) {
-  closePopup(evt.target.closest(".popup"));
+  closePopup(imgPopup);
 });
 addCardPopup
   .querySelector(".popup-edit")
