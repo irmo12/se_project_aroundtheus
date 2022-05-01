@@ -30,7 +30,7 @@
   box-sizing: border-box;
 }
 
-.popup__container_img {
+.popup__container-img {
   max-width: 90vw;
   display: flex;
   flex-flow: column nowrap;
