@@ -152,7 +152,7 @@ function setPopoutImg(evt) {
   const caption = imgPopup.querySelector(".img-popout__caption");
 
   img.setAttribute("src", evt.target.getAttribute("src"));
-  img.setAttribute('alt', `${evt.target.getAttribute("alt")}`)
+  img.setAttribute("alt", `${evt.target.getAttribute("alt")}`);
   caption.textContent = evt.target.getAttribute("alt");
 }
 
@@ -163,13 +163,13 @@ function hanldeImgClick(evt) {
 
 btnEditProfile.addEventListener("click", handleEditProfileBtn);
 btnAddCard.addEventListener("click", handleAddCard);
-btnProfilePopupClose.addEventListener("click", function (evt) {
+btnProfilePopupClose.addEventListener("click", function () {
   closePopup(profilePopup);
 });
-btnAddCardPopoupClose.addEventListener("click", function (evt) {
+btnAddCardPopoupClose.addEventListener("click", function () {
   closePopup(addCardPopup);
 });
-btnImgPopupClose.addEventListener("click", function (evt) {
+btnImgPopupClose.addEventListener("click", function () {
   closePopup(imgPopup);
 });
 addCardPopup
