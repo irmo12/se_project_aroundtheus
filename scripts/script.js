@@ -56,12 +56,12 @@ const initialCards = [
   },
 ];
 
-function openPopup(popupType) {
-  popupType.classList.add("popup_active");
+function openPopup(popup) {
+  popup.classList.add("popup_active");
 }
 
-function closePopup(popupType) {
-  popupType.classList.remove("popup_active");
+function closePopup(popup) {
+  popup.classList.remove("popup_active");
 }
 
 function fillProfileInfo() {
@@ -126,13 +126,13 @@ function fillCardForm() {
     ".popup-edit__field_place_link"
   );
 
-  const cardInput = [
+  const cardInput = 
     {
       name: fieldPlaceTitle.value,
       src: fieldPlaceLink.value,
       alt: fieldPlaceTitle.value,
-    },
-  ];
+    };
+  
   renderCard(cardInput);
 }
 
@@ -152,7 +152,7 @@ function setPopoutImg(evt) {
   const caption = imgPopup.querySelector(".img-popout__caption");
 
   img.setAttribute("src", evt.target.getAttribute("src"));
-  img.setAttribute("alt", `${evt.target.getAttribute("alt")}`);
+  img.setAttribute("alt", evt.target.getAttribute("alt"));
   caption.textContent = evt.target.getAttribute("alt");
 }
 
