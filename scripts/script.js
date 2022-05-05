@@ -121,18 +121,17 @@ function handleTrashBtn(evt) {
 }
 
 function fillCardForm() {
-  const fieldPlaceTitle = addCardPopup.querySelector("input[name='Title']");
+  const fieldPlaceTitle = addCardPopup.querySelector(".popup-edit__field_place-title");
   const fieldPlaceLink = addCardPopup.querySelector(
-    ".popup-edit__field_place_link"
+    ".popup-edit__field_place-link"
   );
 
-  const cardInput = 
-    {
-      name: fieldPlaceTitle.value,
-      src: fieldPlaceLink.value,
-      alt: fieldPlaceTitle.value,
-    };
-  
+  const cardInput = {
+    name: fieldPlaceTitle.value,
+    src: fieldPlaceLink.value,
+    alt: fieldPlaceTitle.value,
+  };
+
   renderCard(cardInput);
 }
 
@@ -183,22 +182,26 @@ renderCards(initialCards);
 
 const showInputError = (formElement, inputElement, errorMsg) => {
   const errorElement = formElement.querySelector(`#${inputElement.name}`);
-  inputElement.classList.add('popup-edit__field_error');
+  inputElement.classList.add("popup-edit__field_error");
   errorElement.textContent = errorMsg;
-  errorElement.classList.remove('.popup-edit__error-msg_inactive');
+  errorElement.classList.remove("popup-edit__error-msg_inactive");
+  console.log(errorElement);
 };
 
 const hideInputError = (formElement, inputElement) => {
   const errorElement = formElement.querySelector(`#${inputElement.name}`);
-  inputElement.classList.remove('popup-edit__field_error');
-  errorElement.classList.add('popup-edit__error-msg_inactive');
-  errorElement.textContent = '';
+  inputElement.classList.remove("popup-edit__field_error");
+  errorElement.classList.add("popup-edit__error-msg_inactive");
+  errorElement.textContent = "";
 };
 
-
 const hideOrShowError = (formElement, inputElement) => {
-  if (inputElement.validity.valid) {hideInputError(formElement, inputElement)}
-  if (!inputElement.validity.valid) {showInputError(formElement, inputElement, inputElement.validationMessage)}
+  if (inputElement.validity.valid) {
+    hideInputError(formElement, inputElement);
+  } else {
+    showInputError(formElement, inputElement, inputElement.validationMessage);
+    
+  }
 };
 
 const hasInvalidInput = (inputList) => {
@@ -208,35 +211,37 @@ const hasInvalidInput = (inputList) => {
 };
 
 const toggleBtnState = (inputList, btnElement) => {
-  
   if (hasInvalidInput(inputList)) {
-    btnElement.setAttribute('disabled','');
+    btnElement.setAttribute("disabled", "");
   } else {
-    btnElement.removeAttribute('disabled','');
+    btnElement.removeAttribute("disabled", "");
   }
 };
 
 const setEventListeners = (formElement) => {
-  const inputList = Array.from(formElement.querySelectorAll(".popup-edit__field"));
- const btnElement = formElement.querySelector(".popup-edit__submit");
-   toggleBtnState(inputList, btnElement);
+  const inputList = Array.from(
+    formElement.querySelectorAll(".popup-edit__field")
+  );
+  const btnElement = formElement.querySelector(".popup-edit__submit");
+  toggleBtnState(inputList, btnElement);
   inputList.forEach((inputElement) => {
     inputElement.addEventListener("input", function () {
       hideOrShowError(formElement, inputElement);
       toggleBtnState(inputList, btnElement);
+      
     });
   });
 };
 
 const enableValidation = () => {
-  const formList = Array.from(document.querySelectorAll('.popup-edit'));
-    formList.forEach((formElement) => {
+  const formList = Array.from(document.querySelectorAll(".popup-edit"));
+  
+  formList.forEach((formElement) => {
     formElement.addEventListener("submit", function (evt) {
       evt.preventDefault();
-      setEventListeners(formElement);
     });
+    setEventListeners(formElement);
   });
 };
 
 enableValidation();
-

@@ -33,7 +33,7 @@
   color: #000;
   width: 100%;
   padding: 9px 0;
-  margin: 0;
+  margin: 0 0 30px;
   min-width: 0;
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
   
@@ -43,16 +43,9 @@
   color: rgba(0, 0, 0, 0.2);
 }
 
-.popup-edit__field:first-of-type{
-  margin-bottom: 30px;
-}
-
-.popup-edit__field:last-of-type {
-  margin-bottom: 48px;
-}
-
 .popup-edit__field_error {
   border-bottom: 1px solid #FF0000;
+  margin-bottom: 0px;
 }
 
 .popup-edit__submit {
@@ -70,7 +63,7 @@
   text-align: center;
   transition: opacity 0.4s;
   cursor: pointer;
-  margin-bottom: 36.5px;
+  margin: 18px 0 36.5px;
 }
 
 .popup-edit__submit:hover {

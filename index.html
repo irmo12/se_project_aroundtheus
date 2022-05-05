@@ -65,7 +65,7 @@
                 name="name"
                 required maxlength="40" minlength="2"
                 />
-              <span class="popup-edit__error-msg" id="name"></span>
+              <span class="popup-edit__error-msg popup-edit__error-msg_inactive" id="name"></span>
               <input
                 type="text"
                 class="popup-edit__field popup-edit__field_user_about"
@@ -73,7 +73,7 @@
                 name="about"
                 required maxlength="200" minlength="2"
               />
-              <span class="popup-edit__error-msg" id="about"></span>
+              <span class="popup-edit__error-msg popup-edit__error-msg_inactive" id="about"></span>
             </fieldset>
             <button type="submit" class="popup-edit__submit">Save</button>
           </form>
@@ -91,21 +91,22 @@
             <fieldset class="popup-edit__inputs">
               <input
                 type="text"
-                class="popup-edit__field popup-edit__field_place_title"
+                class="popup-edit__field popup-edit__field_place-title"
                 placeholder="Title"
                 name="imgTitle"
                 required
+                maxlength="30"
                 
               />
-              <span class="popup-edit__error-msg" id="imgTitle"></span>
+              <span class="popup-edit__error-msg popup-edit__error-msg_inactive" id="imgTitle"></span>
               <input
                 type="url"
-                class="popup-edit__field popup-edit__field_place_link"
+                class="popup-edit__field popup-edit__field_place-link"
                 placeholder="Image link"
                 name="imgLink"
                 required
                 />
-              <span class="popup-edit__error-msg" id="imgLink"></span>
+              <span class="popup-edit__error-msg popup-edit__error-msg_inactive" id="imgLink"></span>
             </fieldset>
             <button
               type="submit"
