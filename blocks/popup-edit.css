@@ -51,6 +51,10 @@
   margin-bottom: 48px;
 }
 
+.popup-edit__field_error {
+  border-bottom: 1px solid #FF0000;
+}
+
 .popup-edit__submit {
   background-color: #000;
   color: #fff;
@@ -71,6 +75,27 @@
 
 .popup-edit__submit:hover {
   opacity: 0.8;
+}
+
+.popup-edit__submit:disabled {
+background-color: #e5e5e5;
+color: #000;
+border: 1px solid #000;
+border-radius: 2px;
+opacity: .2;
+}
+
+.popup-edit__error-msg {
+  color: #FF0000;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 1.25;
+
+}
+
+.popup-edit__error-msg_inactive {
+  display: none;
 }
 
 @media screen and (max-width: 796px) {
