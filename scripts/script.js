@@ -182,18 +182,20 @@ profilePopup
 
 const setOverlayListeners = (overlayList) => {
   overlayList.forEach((overlay) => {
-    
-    overlay.addEventListener("click", function (evt) {if (evt.target===this) {closePopup(overlay);}});
+    overlay.addEventListener("click", function (evt) {
+      if (evt.target === this) {
+        closePopup(overlay);
+      }
+    });
   });
 };
 
 const enableClosebyOverlay = () => {
-  const overlayList =  Array.from(document.querySelectorAll('.popup'));
-  setOverlayListeners(overlayList); 
-}
+  const overlayList = Array.from(document.querySelectorAll(".popup"));
+  setOverlayListeners(overlayList);
+};
 
 enableClosebyOverlay();
-
 
 renderCards(initialCards);
 
