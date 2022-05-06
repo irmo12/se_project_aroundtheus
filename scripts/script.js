@@ -180,15 +180,20 @@ profilePopup
   .querySelector(".popup-edit")
   .addEventListener("submit", handleEditProfileSave);
 
-const setOverlayListeners = (overlayList) => {
-  overlayList.forEach((overlay) => {
+function setOverlayListeners(overlayList) {
+  overlayList.forEach(function (overlay) {
+    document.addEventListener("keydown", function (evt) {
+      if (evt.key === "Escape") {
+        closePopup(overlay);
+      }
+    });
     overlay.addEventListener("click", function (evt) {
       if (evt.target === this) {
         closePopup(overlay);
       }
     });
   });
-};
+}
 
 const enableClosebyOverlay = () => {
   const overlayList = Array.from(document.querySelectorAll(".popup"));
