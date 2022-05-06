@@ -13,7 +13,8 @@
   flex-flow: column nowrap;
   visibility: hidden;
   transition: opacity .4s ease-in, visibility 0ms ease-in .4s;
-  z-index: 5;
+  z-index: 2;
+  cursor: pointer;
 }
 
 .popup__container {
@@ -28,13 +29,17 @@
   box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.15);
   border-radius: 10px;
   box-sizing: border-box;
-}
+  z-index: 5;
+  cursor: default;
+  }
 
 .popup__container-img {
   max-width: 75vw;
   display: flex;
   flex-flow: column nowrap;
-}
+  z-index: 5;
+  cursor: default;
+  }
 
 .popup__container-close {
   background-image: url(../images/plus.svg);
@@ -49,6 +54,7 @@
   margin-left: 470px;
   transition: opacity 0.3s;
   cursor: pointer;
+  z-index: 5;
 }
 
 .popup__container-close_img {

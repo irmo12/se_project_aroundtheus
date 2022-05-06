@@ -121,7 +121,9 @@ function handleTrashBtn(evt) {
 }
 
 function fillCardForm() {
-  const fieldPlaceTitle = addCardPopup.querySelector(".popup-edit__field_place-title");
+  const fieldPlaceTitle = addCardPopup.querySelector(
+    ".popup-edit__field_place-title"
+  );
   const fieldPlaceLink = addCardPopup.querySelector(
     ".popup-edit__field_place-link"
   );
@@ -178,6 +180,21 @@ profilePopup
   .querySelector(".popup-edit")
   .addEventListener("submit", handleEditProfileSave);
 
+const setOverlayListeners = (overlayList) => {
+  overlayList.forEach((overlay) => {
+    
+    overlay.addEventListener("click", function (evt) {if (evt.target===this) {closePopup(overlay);}});
+  });
+};
+
+const enableClosebyOverlay = () => {
+  const overlayList =  Array.from(document.querySelectorAll('.popup'));
+  setOverlayListeners(overlayList); 
+}
+
+enableClosebyOverlay();
+
+
 renderCards(initialCards);
 
 const showInputError = (formElement, inputElement, errorMsg) => {
@@ -200,7 +217,6 @@ const hideOrShowError = (formElement, inputElement) => {
     hideInputError(formElement, inputElement);
   } else {
     showInputError(formElement, inputElement, inputElement.validationMessage);
-    
   }
 };
 
@@ -228,14 +244,13 @@ const setEventListeners = (formElement) => {
     inputElement.addEventListener("input", function () {
       hideOrShowError(formElement, inputElement);
       toggleBtnState(inputList, btnElement);
-      
     });
   });
 };
 
 const enableValidation = () => {
   const formList = Array.from(document.querySelectorAll(".popup-edit"));
-  
+
   formList.forEach((formElement) => {
     formElement.addEventListener("submit", function (evt) {
       evt.preventDefault();
