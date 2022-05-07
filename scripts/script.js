@@ -1,3 +1,5 @@
+import { enableValidation, resetValidation } from "./modules/validate.js";
+
 const btnEditProfile = document.querySelector(".profile__edit-button");
 const btnAddCard = document.querySelector(".profile__add-btn");
 const profileUser = document.querySelector(".profile__user");
@@ -6,7 +8,7 @@ const addCardPopup = document.querySelector("#addCardPopup");
 const imgPopup = document.querySelector("#imgPopup");
 const gallery = document.querySelector(".gallery");
 const cardTemplate = document.querySelector("#card").content;
-const mediaQuery = window.matchMedia("(max-width: 796px)");
+
 const btnProfilePopupClose = profilePopup.querySelector(
   ".popup__container-close"
 );
@@ -58,10 +60,17 @@ const initialCards = [
 
 function openPopup(popup) {
   popup.classList.add("popup_active");
+  if (popup.id === "addCardPopup") {
+    popup.querySelector(".popup-edit").reset();
+  }
 }
 
 function closePopup(popup) {
   popup.classList.remove("popup_active");
+  if (popup.id !== "imgPopup") {
+    resetValidation(popup.querySelector(".popup-edit"));
+  }
+  document.removeEventListener(setEscListener);
 }
 
 function fillProfileInfo() {
@@ -104,8 +113,7 @@ function createCard(card) {
 }
 
 function renderCard(card) {
-  cardElement = createCard(card);
-  gallery.prepend(cardElement);
+  gallery.prepend(createCard(card));
 }
 
 function renderCards(cardsArr = initialCards) {
@@ -180,19 +188,23 @@ profilePopup
   .querySelector(".popup-edit")
   .addEventListener("submit", handleEditProfileSave);
 
-function setOverlayListeners(overlayList) {
-  overlayList.forEach(function (overlay) {
-    document.addEventListener("keydown", function (evt) {
-      if (evt.key === "Escape") {
-        closePopup(overlay);
-      }
-    });
-    overlay.addEventListener("click", function (evt) {
-      if (evt.target === this) {
-        closePopup(overlay);
-      }
-    });
+const setEscListener = (overlay) => {
+  document.addEventListener("keydown", function (evt) {
+    if (evt.key === "Escape") {
+      closePopup(overlay);
+    }
   });
+};
+
+function setOverlayListeners(overlayList) {
+  overlayList.forEach((overlay) => {
+  overlay.addEventListener("click", function (evt) {
+    if (evt.target === this) {
+      closePopup(overlay);
+    }
+  });
+  setEscListener(overlay);
+});
 }
 
 const enableClosebyOverlay = () => {
@@ -201,69 +213,5 @@ const enableClosebyOverlay = () => {
 };
 
 enableClosebyOverlay();
-
 renderCards(initialCards);
-
-const showInputError = (formElement, inputElement, errorMsg) => {
-  const errorElement = formElement.querySelector(`#${inputElement.name}`);
-  inputElement.classList.add("popup-edit__field_error");
-  errorElement.textContent = errorMsg;
-  errorElement.classList.remove("popup-edit__error-msg_inactive");
-  console.log(errorElement);
-};
-
-const hideInputError = (formElement, inputElement) => {
-  const errorElement = formElement.querySelector(`#${inputElement.name}`);
-  inputElement.classList.remove("popup-edit__field_error");
-  errorElement.classList.add("popup-edit__error-msg_inactive");
-  errorElement.textContent = "";
-};
-
-const hideOrShowError = (formElement, inputElement) => {
-  if (inputElement.validity.valid) {
-    hideInputError(formElement, inputElement);
-  } else {
-    showInputError(formElement, inputElement, inputElement.validationMessage);
-  }
-};
-
-const hasInvalidInput = (inputList) => {
-  return inputList.some((inputElement) => {
-    return !inputElement.validity.valid;
-  });
-};
-
-const toggleBtnState = (inputList, btnElement) => {
-  if (hasInvalidInput(inputList)) {
-    btnElement.setAttribute("disabled", "");
-  } else {
-    btnElement.removeAttribute("disabled", "");
-  }
-};
-
-const setEventListeners = (formElement) => {
-  const inputList = Array.from(
-    formElement.querySelectorAll(".popup-edit__field")
-  );
-  const btnElement = formElement.querySelector(".popup-edit__submit");
-  toggleBtnState(inputList, btnElement);
-  inputList.forEach((inputElement) => {
-    inputElement.addEventListener("input", function () {
-      hideOrShowError(formElement, inputElement);
-      toggleBtnState(inputList, btnElement);
-    });
-  });
-};
-
-const enableValidation = () => {
-  const formList = Array.from(document.querySelectorAll(".popup-edit"));
-
-  formList.forEach((formElement) => {
-    formElement.addEventListener("submit", function (evt) {
-      evt.preventDefault();
-    });
-    setEventListeners(formElement);
-  });
-};
-
 enableValidation();

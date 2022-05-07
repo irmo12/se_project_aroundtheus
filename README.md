@@ -12,6 +12,11 @@ Uses js to implement form submition.
 Implemented js DOM manipulation to add front-end interactivity: users can now: add an image to gallery, click the heart button to like, remove images from gallery, click an image to display in original size.
 also added smooth fade in and out for popups.
 
+### 3rd part update!
+
+Implemented form validation using js. Visitors will now see red notice on forms upon entering invalid input for smooth UX when filling forms.
+Used js modules to break script apart to smaller files.
+
 https://irmo12.github.io/web_project_4/
 
 
