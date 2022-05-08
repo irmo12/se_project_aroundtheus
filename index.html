@@ -63,17 +63,27 @@
                 class="popup-edit__field popup-edit__field_user_name"
                 placeholder="Name"
                 name="name"
-                required maxlength="40" minlength="2"
-                />
-              <span class="popup-edit__error-msg popup-edit__error-msg_inactive" id="name"></span>
+                required
+                maxlength="40"
+                minlength="2"
+              />
+              <span
+                class="popup-edit__error-msg popup-edit__error-msg_inactive"
+                id="name"
+              ></span>
               <input
                 type="text"
                 class="popup-edit__field popup-edit__field_user_about"
                 placeholder="About me"
                 name="about"
-                required maxlength="200" minlength="2"
+                required
+                maxlength="200"
+                minlength="2"
               />
-              <span class="popup-edit__error-msg popup-edit__error-msg_inactive" id="about"></span>
+              <span
+                class="popup-edit__error-msg popup-edit__error-msg_inactive"
+                id="about"
+              ></span>
             </fieldset>
             <button type="submit" class="popup-edit__submit">Save</button>
           </form>
@@ -96,23 +106,24 @@
                 name="imgTitle"
                 required
                 maxlength="30"
-                
               />
-              <span class="popup-edit__error-msg popup-edit__error-msg_inactive" id="imgTitle"></span>
+              <span
+                class="popup-edit__error-msg popup-edit__error-msg_inactive"
+                id="imgTitle"
+              ></span>
               <input
                 type="url"
                 class="popup-edit__field popup-edit__field_place-link"
                 placeholder="Image link"
                 name="imgLink"
                 required
-                />
-              <span class="popup-edit__error-msg popup-edit__error-msg_inactive" id="imgLink"></span>
+              />
+              <span
+                class="popup-edit__error-msg popup-edit__error-msg_inactive"
+                id="imgLink"
+              ></span>
             </fieldset>
-            <button
-              type="submit"
-              class="popup-edit__submit"
-              disabled
-            >
+            <button type="submit" class="popup-edit__submit" disabled>
               Create
             </button>
           </form>
@@ -125,10 +136,10 @@
             class="popup__container-close popup__container-close_img"
             aria-label="close"
           ></button>
-          <div class="img-popout">
+          <div class="popup__img-popout">
             <img class="img-popout__img" src="#" alt="#" />
-            <span class="img-popout__caption"></span>
           </div>
+          <span class="img-popout__caption"></span>
         </div>
       </div>
       <section class="gallery"></section>
@@ -144,6 +155,6 @@
         <button class="card__like-btn" type="button" aria-label="like"></button>
       </article>
     </template>
-    <script type='module' src="./scripts/script.js"></script>
+    <script type="module" src="./scripts/script.js"></script>
   </body>
 </html>

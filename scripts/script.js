@@ -38,7 +38,7 @@ const initialCards = [
   },
   {
     name: "Bald Mountains",
-    src: "./images/kirill-pershin-1556355-unsplash.png",
+    src: './images/photo-1449867727329-3294ea016353.jpg',
     alt: "Bald Mountains",
   },
   {
@@ -63,6 +63,7 @@ function openPopup(popup) {
   if (popup.id === "addCardPopup") {
     popup.querySelector(".popup-edit").reset();
   }
+  setEscListener(popup);
 }
 
 function closePopup(popup) {
@@ -70,7 +71,7 @@ function closePopup(popup) {
   if (popup.id !== "imgPopup") {
     resetValidation(popup.querySelector(".popup-edit"));
   }
-  document.removeEventListener(setEscListener);
+  document.removeEventListener('keydown', setEscListener);
 }
 
 function fillProfileInfo() {
@@ -203,7 +204,7 @@ function setOverlayListeners(overlayList) {
       closePopup(overlay);
     }
   });
-  setEscListener(overlay);
+  
 });
 }
 

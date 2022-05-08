@@ -41,6 +41,10 @@
   cursor: default;
   }
 
+  .popup__img-popout {
+    max-width: 75vw;
+  }
+
 .popup__container-close {
   background-image: url(../images/plus.svg);
   transform: rotate(-45deg);
