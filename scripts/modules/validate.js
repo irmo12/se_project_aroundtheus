@@ -38,44 +38,29 @@ const toggleBtnState = (inputList, btnElement) => {
 
 const setEventListeners = (
   formElement,
-  inputSelector,
-  submitButtonSelector,
-  inputErrorClass,
-  errorClass
+  selectors
 ) => {
-  const inputList = Array.from(formElement.querySelectorAll(inputSelector));
-  const btnElement = formElement.querySelector(submitButtonSelector);
+  const inputList = Array.from(formElement.querySelectorAll(selectors.inputSelector));
+  const btnElement = formElement.querySelector(selectors.submitButtonSelector);
   toggleBtnState(inputList, btnElement);
   inputList.forEach((inputElement) => {
     inputElement.addEventListener("input", function () {
-      hideOrShowError(formElement, inputElement, inputErrorClass,
-        errorClass);
+      hideOrShowError(formElement, inputElement, selectors.inputErrorClass,
+        selectors.errorClass);
       toggleBtnState(inputList, btnElement);
     });
   });
 };
 
-const enableValidation = (
-  formSelector = ".popup-edit",
-  inputSelector = ".popup-edit__field",
-  submitButtonSelector = ".popup-edit__submit",
-  inactiveButtonClass = "",
-  inputErrorClass = "popup-edit__field_error",
-  errorClass = "popup-edit__error-msg_inactive"
-) => {
-  const formList = Array.from(document.querySelectorAll(formSelector));
+const enableValidation = (selectors) => {
+
+  const formList = Array.from(document.querySelectorAll(selectors.formSelector));
     
   formList.forEach((formElement) => {
     formElement.addEventListener("submit", function (evt) {
       evt.preventDefault();
     });
-    setEventListeners(
-      formElement,
-      inputSelector,
-      submitButtonSelector,
-      inputErrorClass,
-      errorClass
-    );
+    setEventListeners(formElement, selectors);
   });
 };
 
@@ -83,7 +68,7 @@ const resetValidation = (formElement) => {
     const inputErrorClass = 'popup-edit__field_error';
     const errorClass = 'popup-edit__error-msg_inactive';
     const inputList = Array.from(formElement.querySelectorAll('.popup-edit__field'));
-
+    toggleBtnState(inputList, formElement.querySelector('.popup-edit__submit'));
     inputList.forEach((inputElement) => {hideInputError(formElement, inputElement, inputErrorClass, errorClass);
     });
 }

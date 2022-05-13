@@ -1,5 +1,6 @@
 import { enableValidation, resetValidation } from "./modules/validate.js";
 
+const popups = document.querySelectorAll(".popup");
 const btnEditProfile = document.querySelector(".profile__edit-button");
 const btnAddCard = document.querySelector(".profile__add-btn");
 const profileUser = document.querySelector(".profile__user");
@@ -8,7 +9,12 @@ const addCardPopup = document.querySelector("#addCardPopup");
 const imgPopup = document.querySelector("#imgPopup");
 const gallery = document.querySelector(".gallery");
 const cardTemplate = document.querySelector("#card").content;
-
+const fieldPlaceTitle = addCardPopup.querySelector(
+  ".popup-edit__field_place-title"
+);
+const fieldPlaceLink = addCardPopup.querySelector(
+  ".popup-edit__field_place-link"
+);
 const btnProfilePopupClose = profilePopup.querySelector(
   ".popup__container-close"
 );
@@ -24,54 +30,58 @@ const fieldProfileName = profilePopup.querySelector(
 const fieldProfileAbout = profilePopup.querySelector(
   ".popup-edit__field_user_about"
 );
-
+const img = imgPopup.querySelector(".img-popout__img");
+const caption = imgPopup.querySelector(".img-popout__caption");
 const initialCards = [
   {
     name: "Yosemite Valley",
-    src: "./images/kirill-pershin-1088404-unsplash.png",
+    src: "./images/felix-rottmann-y50kCzzgIh8-unsplash.jpg",
     alt: "Yosemite el capitan",
   },
   {
     name: "Lake Louise",
-    src: "./images/kirill-pershin-1404681-unsplash.png",
+    src: "./images/stephen-leonardi-xbijGddvKNo-unsplash.jpg",
     alt: "Lake Louise",
   },
   {
     name: "Bald Mountains",
-    src: './images/photo-1449867727329-3294ea016353.jpg',
+    src: "./images/stephen-leonardi-HyMpH19UAtI-unsplash.jpg",
     alt: "Bald Mountains",
   },
   {
     name: "Latemar",
-    src: "./images/kirill-pershin-1404681-unsplash-1.png",
+    src: "./images/peter-steiner-FrqiXDxxOGs-unsplash.jpg",
     alt: "Latemar",
   },
   {
     name: "Vanoise National Park",
-    src: "./images/kirill-pershin-1556355-unsplash-1.png",
+    src: "./images/freysteinn-g-jonsson-Ebk1MBerpwo-unsplash.jpg",
     alt: "Vanoise National Park",
   },
   {
     name: "Lago di Braies",
-    src: "./images/kirill-pershin-1088404-unsplash-1.png",
+    src: "./images/jeremy-alford-WhbLmhaiu_w-unsplash.jpg",
     alt: "Lago di Braies",
   },
 ];
 
+const selectors = {
+  formSelector: ".popup-edit",
+  inputSelector: ".popup-edit__field",
+  submitButtonSelector: ".popup-edit__submit",
+  inactiveButtonClass: "",
+  inputErrorClass: "popup-edit__field_error",
+  errorClass: "popup-edit__error-msg_inactive",
+};
+
 function openPopup(popup) {
   popup.classList.add("popup_active");
-  if (popup.id === "addCardPopup") {
-    popup.querySelector(".popup-edit").reset();
-  }
-  setEscListener(popup);
+  document.addEventListener("keydown", closeByEscape);
 }
 
 function closePopup(popup) {
   popup.classList.remove("popup_active");
-  if (popup.id !== "imgPopup") {
-    resetValidation(popup.querySelector(".popup-edit"));
-  }
-  document.removeEventListener('keydown', setEscListener);
+  document.removeEventListener("keydown", closeByEscape);
 }
 
 function fillProfileInfo() {
@@ -92,6 +102,7 @@ function fillProfileForm() {
 
 function handleEditProfileBtn() {
   fillProfileForm();
+  resetValidation(profilePopup.querySelector(".popup-edit"));
   openPopup(profilePopup);
 }
 
@@ -130,13 +141,6 @@ function handleTrashBtn(evt) {
 }
 
 function fillCardForm() {
-  const fieldPlaceTitle = addCardPopup.querySelector(
-    ".popup-edit__field_place-title"
-  );
-  const fieldPlaceLink = addCardPopup.querySelector(
-    ".popup-edit__field_place-link"
-  );
-
   const cardInput = {
     name: fieldPlaceTitle.value,
     src: fieldPlaceLink.value,
@@ -150,17 +154,16 @@ function handleAddCardSubmit(evt) {
   evt.preventDefault();
   fillCardForm();
   closePopup(addCardPopup);
-  evt.target.closest(".popup-edit").reset();
+  evt.target.reset();
 }
 
 function handleAddCard() {
+  addCardPopup.querySelector('.popup-edit').reset();
+  resetValidation(addCardPopup.querySelector(".popup-edit"));
   openPopup(addCardPopup);
 }
 
 function setPopoutImg(evt) {
-  const img = imgPopup.querySelector(".img-popout__img");
-  const caption = imgPopup.querySelector(".img-popout__caption");
-
   img.setAttribute("src", evt.target.getAttribute("src"));
   img.setAttribute("alt", evt.target.getAttribute("alt"));
   caption.textContent = evt.target.getAttribute("alt");
@@ -189,30 +192,23 @@ profilePopup
   .querySelector(".popup-edit")
   .addEventListener("submit", handleEditProfileSave);
 
-const setEscListener = (overlay) => {
-  document.addEventListener("keydown", function (evt) {
-    if (evt.key === "Escape") {
-      closePopup(overlay);
-    }
-  });
-};
-
-function setOverlayListeners(overlayList) {
-  overlayList.forEach((overlay) => {
-  overlay.addEventListener("click", function (evt) {
-    if (evt.target === this) {
-      closePopup(overlay);
-    }
-  });
-  
-});
+function closeByEscape(evt) {
+  if (evt.key === "Escape") {
+    const openedPopup = document.querySelector(".popup_active");
+    closePopup(openedPopup);
+  }
 }
 
-const enableClosebyOverlay = () => {
-  const overlayList = Array.from(document.querySelectorAll(".popup"));
-  setOverlayListeners(overlayList);
-};
+popups.forEach((popup) => {
+  popup.addEventListener("mousedown", (evt) => {
+    if (evt.target.classList.contains("popup_active")) {
+      closePopup(popup);
+    }
+    if (evt.target.classList.contains("popup__container-close")) {
+      closePopup(popup);
+    }
+  });
+});
 
-enableClosebyOverlay();
 renderCards(initialCards);
-enableValidation();
+enableValidation(selectors);
