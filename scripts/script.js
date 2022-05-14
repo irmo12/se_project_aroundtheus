@@ -102,7 +102,7 @@ function fillProfileForm() {
 
 function handleEditProfileBtn() {
   fillProfileForm();
-  resetValidation(profilePopup.querySelector(".popup-edit"));
+  resetValidation(profilePopup.querySelector(selectors.formSelector),selectors);
   openPopup(profilePopup);
 }
 
@@ -158,8 +158,8 @@ function handleAddCardSubmit(evt) {
 }
 
 function handleAddCard() {
-  addCardPopup.querySelector('.popup-edit').reset();
-  resetValidation(addCardPopup.querySelector(".popup-edit"));
+  addCardPopup.querySelector(selectors.formSelector).reset();
+  resetValidation(addCardPopup.querySelector(selectors.formSelector), selectors);
   openPopup(addCardPopup);
 }
 
