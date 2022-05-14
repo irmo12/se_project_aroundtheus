@@ -8,8 +8,7 @@
   background-color: #fff;
   border-radius: 10px;
   position: relative;
-  border-top-left-radius: 10px;
-  border-top-right-radius: 10px;
+
 }
 
 .card__img {
@@ -21,6 +20,8 @@
   align-self: flex-start;
   display: block;
   cursor: pointer;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
 }
 
 .card__trash {

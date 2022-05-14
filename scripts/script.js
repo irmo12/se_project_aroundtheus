@@ -35,17 +35,17 @@ const caption = imgPopup.querySelector(".img-popout__caption");
 const initialCards = [
   {
     name: "Yosemite Valley",
-    src: "./images/felix-rottmann-y50kCzzgIh8-unsplash.jpg",
+    src: "./images/kirill-pershin-1088404-unsplash.png",
     alt: "Yosemite el capitan",
   },
   {
     name: "Lake Louise",
-    src: "./images/stephen-leonardi-xbijGddvKNo-unsplash.jpg",
+    src: "./images/kirill-pershin-1404681-unsplash.png",
     alt: "Lake Louise",
   },
   {
     name: "Bald Mountains",
-    src: "./images/stephen-leonardi-HyMpH19UAtI-unsplash.jpg",
+    src: "./images/kirill-pershin-1556355-unsplash.png",
     alt: "Bald Mountains",
   },
   {
