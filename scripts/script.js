@@ -102,7 +102,7 @@ function fillProfileForm() {
 
 function handleEditProfileBtn() {
   fillProfileForm();
-  resetValidation(profilePopup.querySelector(".popup-edit"));
+  resetValidation(profilePopup.querySelector(selectors.formSelector),selectors);
   openPopup(profilePopup);
 }
 

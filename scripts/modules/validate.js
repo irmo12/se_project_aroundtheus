@@ -1,24 +1,22 @@
-const showInputError = (formElement, inputElement, inputErrorClass, errorClass, errorMsg) => {
+const showInputError = (formElement, inputElement, selectors, errorMsg) => {
   const errorElement = formElement.querySelector(`#${inputElement.name}`);
-  inputElement.classList.add(inputErrorClass);
+  inputElement.classList.add(selectors.inputErrorClass);
   errorElement.textContent = errorMsg;
-  errorElement.classList.remove(errorClass);
+  errorElement.classList.remove(selectors.errorClass);
 };
 
-const hideInputError = (formElement, inputElement, inputErrorClass, errorClass) => {
+const hideInputError = (formElement, inputElement, selectors) => {
   const errorElement = formElement.querySelector(`#${inputElement.name}`);
-  inputElement.classList.remove(inputErrorClass);
-  errorElement.classList.add(errorClass);
+  inputElement.classList.remove(selectors.inputErrorClass);
+  errorElement.classList.add(selectors.errorClass);
   errorElement.textContent = "";
 };
 
-const hideOrShowError = (formElement, inputElement, inputErrorClass,
-    errorClass) => {
+const hideOrShowError = (formElement, inputElement, selectors) => {
   if (inputElement.validity.valid) {
-    hideInputError(formElement, inputElement, inputErrorClass,
-        errorClass);
+    hideInputError(formElement, inputElement, selectors);
   } else {
-    showInputError(formElement, inputElement, inputErrorClass, errorClass, inputElement.validationMessage);
+    showInputError(formElement, inputElement, selectors, inputElement.validationMessage);
   }
 };
 
@@ -45,8 +43,7 @@ const setEventListeners = (
   toggleBtnState(inputList, btnElement);
   inputList.forEach((inputElement) => {
     inputElement.addEventListener("input", function () {
-      hideOrShowError(formElement, inputElement, selectors.inputErrorClass,
-        selectors.errorClass);
+      hideOrShowError(formElement, inputElement, selectors);
       toggleBtnState(inputList, btnElement);
     });
   });
@@ -64,12 +61,11 @@ const enableValidation = (selectors) => {
   });
 };
 
-const resetValidation = (formElement) => {
-    const inputErrorClass = 'popup-edit__field_error';
-    const errorClass = 'popup-edit__error-msg_inactive';
-    const inputList = Array.from(formElement.querySelectorAll('.popup-edit__field'));
-    toggleBtnState(inputList, formElement.querySelector('.popup-edit__submit'));
-    inputList.forEach((inputElement) => {hideInputError(formElement, inputElement, inputErrorClass, errorClass);
+const resetValidation = (formElement, selectors) => {
+    
+    const inputList = Array.from(formElement.querySelectorAll(selectors.inputSelector));
+    toggleBtnState(inputList, formElement.querySelector(selectors.submitButtonSelector));
+    inputList.forEach((inputElement) => {hideInputError(formElement, inputElement, selectors.inputErrorClass, selectors.errorClass);
     });
 }
 
