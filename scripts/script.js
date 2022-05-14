@@ -175,16 +175,9 @@ function hanldeImgClick(evt) {
 }
 
 btnEditProfile.addEventListener("click", handleEditProfileBtn);
+
 btnAddCard.addEventListener("click", handleAddCard);
-btnProfilePopupClose.addEventListener("click", function () {
-  closePopup(profilePopup);
-});
-btnAddCardPopoupClose.addEventListener("click", function () {
-  closePopup(addCardPopup);
-});
-btnImgPopupClose.addEventListener("click", function () {
-  closePopup(imgPopup);
-});
+
 addCardPopup
   .querySelector(".popup-edit")
   .addEventListener("submit", handleAddCardSubmit);
