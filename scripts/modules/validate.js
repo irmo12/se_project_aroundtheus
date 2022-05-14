@@ -65,7 +65,7 @@ const resetValidation = (formElement, selectors) => {
     
     const inputList = Array.from(formElement.querySelectorAll(selectors.inputSelector));
     toggleBtnState(inputList, formElement.querySelector(selectors.submitButtonSelector));
-    inputList.forEach((inputElement) => {hideInputError(formElement, inputElement, selectors.inputErrorClass, selectors.errorClass);
+    inputList.forEach((inputElement) => {hideInputError(formElement, inputElement, selectors);
     });
 }
 

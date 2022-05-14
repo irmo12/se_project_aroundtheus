@@ -158,8 +158,8 @@ function handleAddCardSubmit(evt) {
 }
 
 function handleAddCard() {
-  addCardPopup.querySelector('.popup-edit').reset();
-  resetValidation(addCardPopup.querySelector(".popup-edit"));
+  addCardPopup.querySelector(selectors.formSelector).reset();
+  resetValidation(addCardPopup.querySelector(selectors.formSelector), selectors);
   openPopup(addCardPopup);
 }
 
