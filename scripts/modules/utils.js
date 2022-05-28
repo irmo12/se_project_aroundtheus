@@ -4,7 +4,7 @@ import {
   fillProfileForm,
   settings,
   addCardPopup,
-  validateForms,
+  validateForm,
 } from "../script.js";
 
 function openPopup(selector) {
@@ -25,13 +25,13 @@ function handleEditProfileSave(evt) {
 
 function handleEditProfileBtn() {
   fillProfileForm();
-  validateForms(settings);
+  validateForm('#profilePopup');
   openPopup("#profilePopup");
 }
 
 function handleAddCard() {
   addCardPopup.querySelector(settings.formSelector).reset();
-  validateForms(settings);
+  validateForm("#addCardPopup");
   openPopup("#addCardPopup");
 }
 

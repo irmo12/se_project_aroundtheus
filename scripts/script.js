@@ -137,18 +137,14 @@ popups.forEach((popup) => {
 
 renderCards(initialCards);
 
-const validateForms = (settings) => {
-  const formList = Array.from(document.querySelectorAll(settings.formSelector));
-  formList.forEach((formElement) => {
-    formElement.addEventListener("submit", function (evt) {
+const validateForm = (settings, selector) => {
+  formElement = document.querySelector(`${selector}`).querySelector('.popup-edit');
+   formElement.addEventListener("submit", function (evt) {
       evt.preventDefault();
     });
     const formValidator = new FormValidator(settings, formElement);
     formValidator.enableValidation();
-  });
 };
-
-validateForms(settings);
 
 export {
   setPopoutImg,
@@ -157,5 +153,5 @@ export {
   fillProfileForm,
   settings,
   addCardPopup,
-  validateForms,
+  validateForm,
 };
