@@ -1,5 +1,5 @@
-import {setPopoutImg} from "../script.js";
-import {openPopup} from "./utils.js";
+import { setPopoutImg } from "../script.js";
+import { openPopup } from "./utils.js";
 
 class Card {
   constructor(name, source, selector) {

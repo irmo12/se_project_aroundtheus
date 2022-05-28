@@ -13,11 +13,12 @@ class FormValidator {
       this._formElement.querySelector(this._settings.submitButtonSelector)
     );
     this._inputList.forEach((inputElement) => {
-      _hideInputError(this._formElement, inputElement, this._settings);
+      this._hideInputError(this._formElement, inputElement, this._settings);
     });
   }
 
   enableValidation() {
+    this._resetValidation();
     const inputList = Array.from(
       this._formElement.querySelectorAll(this._settings.inputSelector)
     );

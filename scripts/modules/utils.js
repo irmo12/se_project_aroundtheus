@@ -1,4 +1,11 @@
-import { fillCardForm, fillProfileInfo, fillProfileForm, settings, addCardPopup, validateForms } from "../script.js";
+import {
+  fillCardForm,
+  fillProfileInfo,
+  fillProfileForm,
+  settings,
+  addCardPopup,
+  validateForms,
+} from "../script.js";
 
 function openPopup(selector) {
   document.querySelector(`${selector}`).classList.add("popup_active");
@@ -47,5 +54,5 @@ export {
   handleEditProfileSave,
   handleEditProfileBtn,
   handleAddCard,
-  handleAddCardSubmit
+  handleAddCardSubmit,
 };

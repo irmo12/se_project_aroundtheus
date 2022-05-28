@@ -5,7 +5,7 @@ import {
   handleAddCard,
   handleAddCardSubmit,
   handleEditProfileSave,
-  closePopup
+  closePopup,
 } from "./modules/utils.js";
 
 const popups = document.querySelectorAll(".popup");
@@ -149,4 +149,12 @@ const validateForms = (settings) => {
 };
 validateForms(settings);
 
-export { setPopoutImg, fillCardForm, fillProfileInfo, fillProfileForm, settings, addCardPopup, validateForms };
+export {
+  setPopoutImg,
+  fillCardForm,
+  fillProfileInfo,
+  fillProfileForm,
+  settings,
+  addCardPopup,
+  validateForms,
+};
