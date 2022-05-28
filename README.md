@@ -17,6 +17,11 @@ also added smooth fade in and out for popups.
 Implemented form validation using js. Visitors will now see red notice on forms upon entering invalid input for smooth UX when filling forms.
 Used js modules to break script apart to smaller files.
 
+### Update! (Project 7):
+
+Refactor code to achieve basic OOP: 'Card' and 'FormValidator' classes created in order to implement functionality in a convenient OOPy way.
+No new functionality added. Accordingly, code has been reorganized using modules.
+
 https://irmo12.github.io/web_project_4/
 
 
