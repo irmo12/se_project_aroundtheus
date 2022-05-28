@@ -133,6 +133,7 @@ function handleAddCardSubmit(evt) {
   evt.target.reset();
 }
 
+
 function handleAddCard() {
   openPopup('#addCardPopup');
 }

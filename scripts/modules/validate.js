@@ -69,4 +69,4 @@ const resetValidation = (formElement, selectors) => {
     });
 }
 
-export { enableValidation , resetValidation};
+export {enableValidation , resetValidation};
