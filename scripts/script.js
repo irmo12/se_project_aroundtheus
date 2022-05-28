@@ -147,6 +147,7 @@ const validateForms = (settings) => {
     formValidator.enableValidation();
   });
 };
+
 validateForms(settings);
 
 export {
