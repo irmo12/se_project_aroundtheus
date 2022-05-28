@@ -26,11 +26,12 @@ class FormValidator {
 
     _hideOrShowError = (formElement, inputElement, settings) => {
         if (inputElement.validity.valid) {
-          _hideInputError(formElement, inputElement, settings);
+          this._hideInputError(formElement, inputElement, settings);
         } else {
-          _showInputError(formElement, inputElement, settings, inputElement.validationMessage);
+          this._showInputError(formElement, inputElement, settings, inputElement.validationMessage);
         }
       };
+
      _showInputError = (formElement, inputElement, settings, errorMsg) => {
         const errorElement = formElement.querySelector(`#${inputElement.name}`);
         inputElement.classList.add(settings.inputErrorClass);

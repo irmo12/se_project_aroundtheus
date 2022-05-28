@@ -1,4 +1,4 @@
-import {setPopoutImg, openPopup} from '../script.js'
+import {setPopoutImg, openPopup} from '../index.js'
 
 class Card {
   constructor(name, source, selector) {
