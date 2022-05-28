@@ -1,5 +1,13 @@
 import FormValidator from "./modules/FormValidator.js";
 import Card from "./modules/Card.js";
+import {
+  handleEditProfileBtn,
+  handleAddCard,
+  handleAddCardSubmit,
+  handleEditProfileSave,
+  closePopup
+} from "./modules/utils.js";
+
 const popups = document.querySelectorAll(".popup");
 const btnEditProfile = document.querySelector(".profile__edit-button");
 const btnAddCard = document.querySelector(".profile__add-btn");
@@ -128,16 +136,17 @@ popups.forEach((popup) => {
 });
 
 renderCards(initialCards);
-const validateForms = (settings) => {
 
+const validateForms = (settings) => {
   const formList = Array.from(document.querySelectorAll(settings.formSelector));
-    formList.forEach((formElement) => {formElement.addEventListener("submit", function (evt) {
+  formList.forEach((formElement) => {
+    formElement.addEventListener("submit", function (evt) {
       evt.preventDefault();
     });
-    const formValidator = new FormValidator (settings, formElement);
-    formValidator.enableValidation ();
+    const formValidator = new FormValidator(settings, formElement);
+    formValidator.enableValidation();
   });
 };
 validateForms(settings);
 
-export { openPopup, setPopoutImg, fillCardForm, fillProfileInfo, fillProfileForm };
+export { setPopoutImg, fillCardForm, fillProfileInfo, fillProfileForm, settings, addCardPopup, validateForms };

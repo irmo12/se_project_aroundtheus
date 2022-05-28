@@ -1,4 +1,5 @@
-import {setPopoutImg, openPopup} from '../index.js'
+import {setPopoutImg} from "../script.js";
+import {openPopup} from "./utils.js";
 
 class Card {
   constructor(name, source, selector) {
@@ -49,7 +50,7 @@ class Card {
 
   _hanldeImgClick() {
     setPopoutImg(this._name, this._src);
-    openPopup('#imgPopup');
+    openPopup("#imgPopup");
   }
 }
 
