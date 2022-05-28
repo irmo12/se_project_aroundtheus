@@ -13,12 +13,12 @@ class FormValidator {
     }
 
     enableValidation() {
-        const inputList = Array.from(this._formElement.querySelectorAll(selectors.inputSelector));
-        const btnElement = formElement.querySelector(selectors.submitButtonSelector);
+        const inputList = Array.from(this._formElement.querySelectorAll(this._settings.inputSelector));
+        const btnElement = this._formElement.querySelector(this._settings.submitButtonSelector);
         this._toggleBtnState(inputList, btnElement);
         inputList.forEach((inputElement) => {
           inputElement.addEventListener("input", () => {
-            this._hideOrShowError(formElement, inputElement, this._settings);
+            this._hideOrShowError(this._formElement, inputElement, this._settings);
             this._toggleBtnState(inputList, btnElement);
           });
         });
@@ -52,7 +52,7 @@ class FormValidator {
       };
       
        _toggleBtnState = (inputList, btnElement) => {
-        if (hasInvalidInput(inputList)) {
+        if (this._hasInvalidInput(inputList)) {
           btnElement.setAttribute("disabled", "");
         } else {
           btnElement.removeAttribute("disabled", "");

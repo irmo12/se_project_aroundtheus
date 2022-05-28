@@ -96,11 +96,9 @@ function handleEditProfileSave(evt) {
 }
 
 function handleEditProfileBtn() {
-  fillPFormValidator(
-    profilePopup.FormVuerySeorector(selectors.formSelector),
-    selectors
-  );
-  openPopup('#profilePopup');
+  fillProfileForm();
+  resetValidation(profilePopup.querySelector(selectors.formSelector),selectors);
+  openPopup(profilePopup);
 }
 
 function createCard(card) {
@@ -135,8 +133,11 @@ function handleAddCardSubmit(evt) {
 
 
 function handleAddCard() {
-  openPopup('#addCardPopup');
+  addCardPopup.querySelector(settings.formSelector).reset();
+  resetValidation(addCardPopup.querySelector(settings.formSelector), selectors);
+  openPopup(addCardPopup);
 }
+
 
 function setPopoutImg(name, source) {
   img.setAttribute("src", source);
