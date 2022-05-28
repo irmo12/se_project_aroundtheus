@@ -25,13 +25,13 @@ function handleEditProfileSave(evt) {
 
 function handleEditProfileBtn() {
   fillProfileForm();
-  validateForm('#profilePopup');
+  validateForm(settings, "editProfileForm");
   openPopup("#profilePopup");
 }
 
 function handleAddCard() {
   addCardPopup.querySelector(settings.formSelector).reset();
-  validateForm("#addCardPopup");
+  validateForm(settings, "addCardForm");
   openPopup("#addCardPopup");
 }
 

@@ -138,7 +138,7 @@ popups.forEach((popup) => {
 renderCards(initialCards);
 
 const validateForm = (settings, selector) => {
-  formElement = document.querySelector(`${selector}`).querySelector('.popup-edit');
+ const formElement = document.querySelector(`[name=${selector}]`);
    formElement.addEventListener("submit", function (evt) {
       evt.preventDefault();
     });
