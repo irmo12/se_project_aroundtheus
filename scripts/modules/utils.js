@@ -5,7 +5,7 @@ import {
   settings,
   addCardPopup,
   profilePopup,
-  formValidators
+  formValidators,
 } from "../script.js";
 
 function openPopup(popup) {
