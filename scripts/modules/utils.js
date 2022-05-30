@@ -1,10 +1,11 @@
 import {
-  fillCardForm,
+  addNewCard,
   fillProfileInfo,
   fillProfileForm,
   settings,
   addCardPopup,
   validateForm,
+  formValidator
 } from "../script.js";
 
 function openPopup(selector) {
@@ -25,7 +26,8 @@ function handleEditProfileSave(evt) {
 
 function handleEditProfileBtn() {
   fillProfileForm();
-  validateForm(settings, "editProfileForm");
+  // validateForm(settings, "editProfileForm");
+  formValidator.reset();
   openPopup("#profilePopup");
 }
 
@@ -43,7 +45,7 @@ function handlecloseByEscape(evt) {
 
 function handleAddCardSubmit(evt) {
   evt.preventDefault();
-  fillCardForm();
+  addNewCard();
   closePopup();
   evt.target.reset();
 }

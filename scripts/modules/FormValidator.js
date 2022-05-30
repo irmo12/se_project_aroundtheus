@@ -10,12 +10,12 @@ class FormValidator {
     );
   }
 
-  _resetValidation() {
-    this._toggleBtnState();
-    this._inputList.forEach((inputElement) => {
-      this._hideInputError(inputElement);
-    });
-  }
+  // _resetValidation() {
+  //   this._toggleBtnState();
+  //   this._inputList.forEach((inputElement) => {
+  //     this._hideInputError(inputElement);
+  //   });
+  // }
 
   enableValidation() {
     this._resetValidation();

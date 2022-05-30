@@ -87,7 +87,7 @@ function renderCards(cardsArr = initialCards) {
   cardsArr.forEach(renderCard);
 }
 
-function fillCardForm() {
+function addNewCard() {
   const cardInput = {
     name: fieldPlaceTitle.value,
     src: fieldPlaceLink.value,
@@ -148,10 +148,11 @@ const validateForm = (settings, selector) => {
 
 export {
   setPopoutImg,
-  fillCardForm,
+  addNewCard,
   fillProfileInfo,
   fillProfileForm,
   settings,
   addCardPopup,
   validateForm,
+  formValidator
 };
