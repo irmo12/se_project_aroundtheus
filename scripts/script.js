@@ -159,5 +159,7 @@ export {
   fillProfileForm,
   settings,
   addCardPopup,
+  profilePopup,
+  imgPopup,
   formValidators
 };

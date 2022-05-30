@@ -1,4 +1,4 @@
-import { setPopoutImg } from "../script.js";
+import { setPopoutImg, imgPopup } from "../script.js";
 import { openPopup } from "./utils.js";
 
 class Card {
@@ -14,34 +14,31 @@ class Card {
       .querySelector(`${this._selector}`)
       .content.querySelector(".card")
       .cloneNode(true);
+    this._img = cardElement.querySelector(".card__img");
+    this._caption = cardElement.querySelector(".card__caption");
+    this._trash = cardElement.querySelector(".card__trash");
+    this._like = cardElement.querySelector(".card__like-btn");
+
     return cardElement;
   }
 
   makeCard() {
     this._element = this._getTemplate();
-    this._element.querySelector(".card__img").setAttribute("src", this._src);
-    this._element.querySelector(".card__caption").textContent = this._name;
-    this._element.querySelector(".card__img").setAttribute("alt", this._name);
+    this._img.setAttribute("src", this._src);
+    this._img.setAttribute("alt", this._name);
+    this._caption.textContent = this._name;
     this._addListeners();
     return this._element;
   }
 
   _addListeners() {
-    this._element
-      .querySelector(".card__like-btn")
-      .addEventListener("click", () => this._handleLikeBtn());
-    this._element
-      .querySelector(".card__img")
-      .addEventListener("click", () => this._hanldeImgClick());
-    this._element
-      .querySelector(".card__trash")
-      .addEventListener("click", () => this._handleTrashBtn());
+    this._like.addEventListener("click", () => this._handleLikeBtn());
+    this._img.addEventListener("click", () => this._hanldeImgClick());
+    this._trash.addEventListener("click", () => this._handleTrashBtn());
   }
 
   _handleLikeBtn() {
-    this._element
-      .querySelector(".card__like-btn")
-      .classList.toggle("card__like-btn_active");
+    this._like.classList.toggle("card__like-btn_active");
   }
 
   _handleTrashBtn() {
@@ -50,7 +47,7 @@ class Card {
 
   _hanldeImgClick() {
     setPopoutImg(this._name, this._src);
-    openPopup("#imgPopup");
+    openPopup(imgPopup);
   }
 }
 
