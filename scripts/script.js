@@ -137,14 +137,20 @@ popups.forEach((popup) => {
 
 renderCards(initialCards);
 
-const validateForm = (settings, selector) => {
- const formElement = document.querySelector(`[name=${selector}]`);
-   formElement.addEventListener("submit", function (evt) {
-      evt.preventDefault();
-    });
-    const formValidator = new FormValidator(settings, formElement);
-    formValidator.enableValidation();
+const formValidators = {};
+const enableValidation = (settings) => {
+  const formList = Array.from(document.querySelectorAll(settings.formSelector));
+  formList.forEach((formElement) => {
+    const validator = new FormValidator(settings, formElement);
+
+    const formName = formElement.getAttribute("name");
+
+    formValidators[formName] = validator;
+    validator.enableValidation();
+  });
 };
+
+enableValidation(settings);
 
 export {
   setPopoutImg,
@@ -153,6 +159,5 @@ export {
   fillProfileForm,
   settings,
   addCardPopup,
-  validateForm,
-  formValidator
+  formValidators
 };
