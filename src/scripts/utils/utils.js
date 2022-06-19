@@ -6,17 +6,17 @@ import {
   addCardPopup,
   profilePopup,
   formValidators
-} from "../script.js";
+} from "../../page/script.js";
 
-function openPopup(popup) {
-  popup.classList.add("popup_active");
-  document.addEventListener("keydown", handleEscKey);
-}
+// function openPopup(popup) {
+//   popup.classList.add("popup_active");
+//   document.addEventListener("keydown", handleEscKey);
+// }
 
-function closePopup() {
-  document.querySelector(".popup_active").classList.remove("popup_active");
-  document.removeEventListener("keydown", handleEscKey);
-}
+// function closePopup() {
+//   document.querySelector(".popup_active").classList.remove("popup_active");
+//   document.removeEventListener("keydown", handleEscKey);
+// }
 
 function handleEditProfileSave(evt) {
   evt.preventDefault();

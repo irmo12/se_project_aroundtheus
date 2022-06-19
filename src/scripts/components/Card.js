@@ -1,12 +1,14 @@
 import { setPopoutImg, imgPopup } from "../script.js";
-import { openPopup } from "./utils.js";
+import { openPopup } from "../utils/utils.js";
 
 class Card {
-  constructor(name, source, selector) {
+  constructor(name, source, selector, handler) {
     this._name = name;
     this._src = source;
     this._alt = name;
     this._selector = selector;
+    this._hanldeImgClick = hanlder;
+    
   }
 
   _getTemplate() {
@@ -45,10 +47,10 @@ class Card {
     this._element.remove();
   }
 
-  _hanldeImgClick() {
-    setPopoutImg(this._name, this._src);
-    openPopup(imgPopup);
-  }
+  // _hanldeImgClick() {
+  //   setPopoutImg(this._name, this._src);
+  //   openPopup(imgPopup);
+  // }
 }
 
 export default Card;
