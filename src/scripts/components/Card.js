@@ -1,7 +1,7 @@
 class Card {
-  constructor({ name, source }, selector, handler) {
-    this._name = name;
-    this._src = source;
+  constructor({ imgTitle, imgLink }, selector, handler) {
+    this._name = imgTitle;
+    this._src = imgLink;
     this._selector = selector;
     this._hanldeImgClick = handler;
   }

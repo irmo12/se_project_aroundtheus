@@ -1,26 +1,29 @@
-import "./index.css"; 
+import "./index.css";
 import FormValidator from "../scripts/components/FormValidator.js";
 import Card from "../scripts/components/Card.js";
 import Section from "../scripts/components/Section.js";
-import PopupWithImages from "../scripts/components/PopupwithImages.js";
+import PopupWithImages from "../scripts/components/PopupWithImages.js";
 import UserInfo from "../scripts/components/UserInfo.js";
 import PopupWithForms from "../scripts/components/PopupWithForms.js";
-import {btnEditProfile, btnAddCard, initialCards, settings} from "../scripts/components/constants.js"
-
-
+import {
+  btnEditProfile,
+  btnAddCard,
+  initialCards,
+  settings,
+} from "../scripts/utils/constants.js";
 
 const gallerySection = new Section(
   {
     items: initialCards,
     renderer: (item) => {
       const cardElement = new Card(
-        { name: item.name, source: item.src },
+        { imgTitle: item.imgTitle, imgLink: item.imgLink },
         "#card",
         (item) => {
           popupImg.open(item);
         }
       );
-      gallerySection.addItem(cardElement.makeCard());
+      return cardElement.makeCard();
     },
   },
   ".gallery"
@@ -40,14 +43,7 @@ export const editProfile = new PopupWithForms({
 export const addCard = new PopupWithForms({
   selector: "#addCardPopup",
   handleSubmit: (data) => {
-    const newCard = new Card(
-      { name: data.imgTitle, source: data.imgLink },
-      "#card",
-      (item) => {
-        popupImg.open(item);
-      }
-    );
-    gallerySection.addItem(newCard.makeCard());
+    gallerySection.addItem(data);
   },
 });
 
@@ -86,7 +82,4 @@ function handleAddCard() {
   addCard.open();
 }
 
-export {
-  userInfo,
-  formValidators,
-};
+export { userInfo, formValidators };

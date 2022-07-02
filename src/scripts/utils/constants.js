@@ -5,41 +5,38 @@ import latemar from "../../images/peter-steiner-FrqiXDxxOGs-unsplash.jpg";
 import vanoise from "../../images/freysteinn-g-jonsson-Ebk1MBerpwo-unsplash.jpg";
 import cactus from "../../images/jeremy-alford-WhbLmhaiu_w-unsplash.jpg";
 
-
-
-
 const btnEditProfile = document.querySelector(".profile__edit-button");
 const btnAddCard = document.querySelector(".profile__add-btn");
 
 const initialCards = [
   {
-    name: "Yosemite Valley",
-    src: yosemite,
+    imgTitle: "Yosemite Valley",
+    imgLink: yosemite,
     alt: "Yosemite el capitan",
   },
   {
-    name: "Lake Louise",
-    src: lLouise,
+    imgTitle: "Lake Louise",
+    imgLink: lLouise,
     alt: "Lake Louise",
   },
   {
-    name: "Bald Mountains",
-    src: bMountains,
+    imgTitle: "Bald Mountains",
+    imgLink: bMountains,
     alt: "Bald Mountains",
   },
   {
-    name: "Latemar",
-    src: latemar,
+    imgTitle: "Latemar",
+    imgLink: latemar,
     alt: "Latemar",
   },
   {
-    name: "Vanoise National Park",
-    src: vanoise,
+    imgTitle: "Vanoise National Park",
+    imgLink: vanoise,
     alt: "Vanoise National Park",
   },
   {
-    name: "Lago di Braies",
-    src: cactus,
+    imgTitle: "Lago di Braies",
+    imgLink: cactus,
     alt: "Lago di Braies",
   },
 ];
