@@ -13,14 +13,13 @@
       content="web development, JS web development, website development project, web development education"
     />
     <meta name="author" content="Omri Ben Tal at Practicum" />
-    <link rel="stylesheet" href="./pages/index.css" />
     <link rel="favicon" href="./favicon.ico" />
   </head>
   <body class="page">
     <header class="header">
       <img
         class="header__logo"
-        src="./images/aroundtheus.svg"
+        src="<%=require('./images/aroundtheus.svg')%>"
         alt="around the u.s."
       />
     </header>
@@ -29,7 +28,7 @@
         <div class="profile__user">
           <img
             class="profile__picture"
-            src="./images/Jacquesprofile.png"
+            src="<%=require('./images/Jacquesprofile.png')%>"
             alt="user profile image"
           />
           <div class="profile__details">
@@ -155,6 +154,5 @@
         <button class="card__like-btn" type="button" aria-label="like"></button>
       </article>
     </template>
-    <script type="module" src="./scripts/script.js"></script>
   </body>
 </html>

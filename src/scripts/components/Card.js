@@ -1,19 +1,15 @@
-import { setPopoutImg, imgPopup } from "../script.js";
-import { openPopup } from "./utils.js";
-
 class Card {
-  constructor(name, source, selector) {
+  constructor({ name, source }, selector, handler) {
     this._name = name;
     this._src = source;
-    this._alt = name;
     this._selector = selector;
+    this._hanldeImgClick = handler;
   }
 
   _getTemplate() {
     const cardElement = document
       .querySelector(`${this._selector}`)
-      .content.querySelector(".card")
-      .cloneNode(true);
+      .content.cloneNode(true);
     this._img = cardElement.querySelector(".card__img");
     this._caption = cardElement.querySelector(".card__caption");
     this._trash = cardElement.querySelector(".card__trash");
@@ -33,21 +29,16 @@ class Card {
 
   _addListeners() {
     this._like.addEventListener("click", () => this._handleLikeBtn());
-    this._img.addEventListener("click", () => this._hanldeImgClick());
-    this._trash.addEventListener("click", () => this._handleTrashBtn());
+    this._img.addEventListener("click", () =>
+      this._hanldeImgClick({ name: this._name, src: this._src })
+    );
+    this._trash.addEventListener("click", (evt) =>
+      evt.target.closest(".card").remove()
+    );
   }
 
   _handleLikeBtn() {
     this._like.classList.toggle("card__like-btn_active");
-  }
-
-  _handleTrashBtn() {
-    this._element.remove();
-  }
-
-  _hanldeImgClick() {
-    setPopoutImg(this._name, this._src);
-    openPopup(imgPopup);
   }
 }
 
