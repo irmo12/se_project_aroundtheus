@@ -22,6 +22,11 @@ Used js modules to break script apart to smaller files.
 Refactor code to achieve basic OOP: 'Card' and 'FormValidator' classes created in order to implement functionality in a convenient OOPy way.
 No new functionality added. Accordingly, code has been reorganized using modules.
 
+### Srint 8 Update:
+
+Further refactor achieves even beter abstraction. Classes now perform only their specific function and are loosly coupled, for a coherent description that is easier then to maintain, expand or reuse.
+Introduced bundeling using webpack and modules - learning how to deploy IRL.
+
 https://irmo12.github.io/web_project_4/
 
 

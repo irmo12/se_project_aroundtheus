@@ -1,58 +1,13 @@
+import "./index.css"; 
 import FormValidator from "../scripts/components/FormValidator.js";
 import Card from "../scripts/components/Card.js";
 import Section from "../scripts/components/Section.js";
 import PopupWithImages from "../scripts/components/PopupwithImages.js";
 import UserInfo from "../scripts/components/UserInfo.js";
 import PopupWithForms from "../scripts/components/PopupWithForms.js";
+import {btnEditProfile, btnAddCard, initialCards, settings} from "../scripts/components/constants.js"
 
-const btnEditProfile = document.querySelector(".profile__edit-button");
-const btnAddCard = document.querySelector(".profile__add-btn");
 
-const profilePopup = document.querySelector("#profilePopup");
-const addCardPopup = document.querySelector("#addCardPopup");
-const imgPopup = document.querySelector("#imgPopup");
-
-const initialCards = [
-  {
-    name: "Yosemite Valley",
-    src: "./images/kirill-pershin-1088404-unsplash.png",
-    alt: "Yosemite el capitan",
-  },
-  {
-    name: "Lake Louise",
-    src: "./images/kirill-pershin-1404681-unsplash.png",
-    alt: "Lake Louise",
-  },
-  {
-    name: "Bald Mountains",
-    src: "./images/kirill-pershin-1556355-unsplash.png",
-    alt: "Bald Mountains",
-  },
-  {
-    name: "Latemar",
-    src: "./images/peter-steiner-FrqiXDxxOGs-unsplash.jpg",
-    alt: "Latemar",
-  },
-  {
-    name: "Vanoise National Park",
-    src: "./images/freysteinn-g-jonsson-Ebk1MBerpwo-unsplash.jpg",
-    alt: "Vanoise National Park",
-  },
-  {
-    name: "Lago di Braies",
-    src: "./images/jeremy-alford-WhbLmhaiu_w-unsplash.jpg",
-    alt: "Lago di Braies",
-  },
-];
-
-const settings = {
-  formSelector: ".popup-edit",
-  inputSelector: ".popup-edit__field",
-  submitButtonSelector: ".popup-edit__submit",
-  inactiveButtonClass: "",
-  inputErrorClass: "popup-edit__field_error",
-  errorClass: "popup-edit__error-msg_inactive",
-};
 
 const gallerySection = new Section(
   {
@@ -133,9 +88,5 @@ function handleAddCard() {
 
 export {
   userInfo,
-  settings,
-  addCardPopup,
-  profilePopup,
-  imgPopup,
   formValidators,
 };
