@@ -25,7 +25,6 @@ export default class PopupWithForms extends Popup {
 
   open(data) {
     if (data) this._setInputValues(data);
-    this._setEventListeners();
     super.open();
   }
 
