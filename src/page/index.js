@@ -12,18 +12,22 @@ import {
   settings,
 } from "../scripts/utils/constants.js";
 
+function createCard(item) {
+  const cardElement = new Card(
+    { imgTitle: item.imgTitle, imgLink: item.imgLink },
+    "#card",
+    (item) => {
+      popupImg.open(item);
+    }
+  );
+  return cardElement.makeCard();
+}
+
 const gallerySection = new Section(
   {
     items: initialCards,
     renderer: (item) => {
-      const cardElement = new Card(
-        { imgTitle: item.imgTitle, imgLink: item.imgLink },
-        "#card",
-        (item) => {
-          popupImg.open(item);
-        }
-      );
-      return cardElement.makeCard();
+      return createCard(item);
     },
   },
   ".gallery"
@@ -31,14 +35,16 @@ const gallerySection = new Section(
 gallerySection.renderAll();
 
 const popupImg = new PopupWithImages("#imgPopup");
+popupImg.setEventListeners();
 
 export const editProfile = new PopupWithForms({
   selector: "#profilePopup",
   handleSubmit: () => {
-    userInfo.setUserInfo(editProfile._getInputValues());
+    userInfo.setUserInfo(editProfile.getInputValues());
     editProfile.close();
   },
 });
+editProfile.setEventListeners();
 
 export const addCard = new PopupWithForms({
   selector: "#addCardPopup",
@@ -46,6 +52,7 @@ export const addCard = new PopupWithForms({
     gallerySection.addItem(data);
   },
 });
+addCard.setEventListeners();
 
 const userInfo = new UserInfo({
   nameSelector: ".profile__user-name",
