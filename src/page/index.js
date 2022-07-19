@@ -10,7 +10,9 @@ import {
   btnAddCard,
   initialCards,
   settings,
+  TOKEN
 } from "../scripts/utils/constants.js";
+import { api } from "../scripts/components/Api.js";
 
 function createCard(item) {
   const cardElement = new Card(
@@ -73,6 +75,10 @@ const enableValidation = (settings) => {
 };
 
 enableValidation(settings);
+
+
+api.getInitialCards()
+.then(res => console.log('res',res));
 
 btnEditProfile.addEventListener("click", handleEditProfileBtn);
 
