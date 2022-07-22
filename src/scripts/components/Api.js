@@ -6,12 +6,32 @@ class Api {
     this._headers = headers;
   }
 
+  getUserInfo() {
+    return fetch(`${this._baseURL}/users/me`, {
+      headers: this._headers,
+    })
+      .then((res) => (res.ok ? res.json() : Promise.reject(res.statusText)))
+      .catch((err) => console.log(err));
+  }
+
   getInitialCards() {
     return fetch(`${this._baseURL}/cards`, {
       headers: this._headers,
     })
       .then((res) => (res.ok ? res.json() : Promise.reject(res.statusText)))
       .catch((err) => console.log(err));
+  }
+
+  patchUserInfo(data) {
+    console.log(JSON.stringify({data}));
+    return fetch(`${this._baseURL}users/me`, {
+      method: "PATCH",
+      headers: this._headers,
+      body: JSON.stringify(
+        data
+      ),
+    }).then((res) => (res.ok ? res.json() : Promise.reject(res.statusText)))
+    .catch((err) => console.log(err));
   }
 }
 

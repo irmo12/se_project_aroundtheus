@@ -8,15 +8,13 @@ import PopupWithForms from "../scripts/components/PopupWithForms.js";
 import {
   btnEditProfile,
   btnAddCard,
-  initialCards,
   settings,
-  TOKEN
 } from "../scripts/utils/constants.js";
 import { api } from "../scripts/components/Api.js";
 
 function createCard(item) {
   const cardElement = new Card(
-    { imgTitle: item.imgTitle, imgLink: item.imgLink },
+    { imgTitle: item.name, imgLink: item.link },
     "#card",
     (item) => {
       popupImg.open(item);
@@ -25,16 +23,12 @@ function createCard(item) {
   return cardElement.makeCard();
 }
 
-const gallerySection = new Section(
-  {
-    items: initialCards,
-    renderer: (item) => {
-      return createCard(item);
-    },
+const gallerySection = new Section({
+  renderer: (item) => {
+    return createCard(item);
   },
-  ".gallery"
-);
-gallerySection.renderAll();
+  selector: ".gallery",
+});
 
 const popupImg = new PopupWithImages("#imgPopup");
 popupImg.setEventListeners();
@@ -42,7 +36,10 @@ popupImg.setEventListeners();
 export const editProfile = new PopupWithForms({
   selector: "#profilePopup",
   handleSubmit: () => {
-    userInfo.setUserInfo(editProfile.getInputValues());
+    const data = editProfile.getInputValues();
+    userInfo.setUserInfo(data);
+    api.patchUserInfo(data)
+    .then((res) => console.log(res));
     editProfile.close();
   },
 });
@@ -76,9 +73,11 @@ const enableValidation = (settings) => {
 
 enableValidation(settings);
 
+api.getUserInfo()
+.then((res) => {document.querySelector('.profile__picture').src = res.avatar;
+userInfo.setUserInfo(res)});
 
-api.getInitialCards()
-.then(res => console.log('res',res));
+api.getInitialCards().then((res) => gallerySection.renderAll(res.slice(0, 6)));
 
 btnEditProfile.addEventListener("click", handleEditProfileBtn);
 

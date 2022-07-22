@@ -7,42 +7,8 @@ import cactus from "../../images/jeremy-alford-WhbLmhaiu_w-unsplash.jpg";
 
 const TOKEN = 'a71d10a8-c3e4-4a43-bbbc-db81e488ab20'
 
-
 const btnEditProfile = document.querySelector(".profile__edit-button");
 const btnAddCard = document.querySelector(".profile__add-btn");
-
-const initialCards = [
-  {
-    imgTitle: "Yosemite Valley",
-    imgLink: yosemite,
-    alt: "Yosemite el capitan",
-  },
-  {
-    imgTitle: "Lake Louise",
-    imgLink: lLouise,
-    alt: "Lake Louise",
-  },
-  {
-    imgTitle: "Bald Mountains",
-    imgLink: bMountains,
-    alt: "Bald Mountains",
-  },
-  {
-    imgTitle: "Latemar",
-    imgLink: latemar,
-    alt: "Latemar",
-  },
-  {
-    imgTitle: "Vanoise National Park",
-    imgLink: vanoise,
-    alt: "Vanoise National Park",
-  },
-  {
-    imgTitle: "Lago di Braies",
-    imgLink: cactus,
-    alt: "Lago di Braies",
-  },
-];
 
 const settings = {
   formSelector: ".popup-edit",
@@ -53,4 +19,4 @@ const settings = {
   errorClass: "popup-edit__error-msg_inactive",
 };
 
-export { btnEditProfile, btnAddCard, initialCards, settings, TOKEN};
+export { btnEditProfile, btnAddCard, settings, TOKEN};

@@ -22,6 +22,7 @@
   align-self: flex-start;
   height: 120px;
   width: 120px;
+  object-fit: cover;
 }
 
 .profile__details {
