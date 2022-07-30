@@ -13,7 +13,7 @@ export default class PopupWithForms extends Popup {
     this._inputFields = [
       ...this._form.querySelectorAll(FORM_INPUT_FIELD_SELECTOR),
     ];
-  }
+     }
 
   getInputValues() {
     const inputValues = {};

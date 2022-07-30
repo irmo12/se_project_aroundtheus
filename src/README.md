@@ -29,4 +29,7 @@ Introduced bundeling using webpack and modules - learning how to deploy IRL.
 
 https://irmo12.github.io/web_project_4/
 
+### Sprint 9 features:
 
+Its time to remove all hard coded information and move to a server. Implementation using asynchronous JS, using promises.
+Added simulation of fetching a specific user, fetching that users gallery, changin users info, adding a card to gallery,

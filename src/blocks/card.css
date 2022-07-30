@@ -8,7 +8,6 @@
   background-color: #fff;
   border-radius: 10px;
   position: relative;
-
 }
 
 .card__img {
@@ -37,9 +36,13 @@
   width: 18px;
   height: 19.3px;
   top: 18px;
-  right: 23.8px;
+  right: 15.8px;
   transition: opacity 0.3s;
   cursor: pointer;
+}
+
+.trash_display-none {
+  display: none;
 }
 
 .card__trash:hover {
@@ -69,7 +72,9 @@
   background-repeat: no-repeat;
   width: 21px;
   height: 19px;
-  margin-right: 18px;
+  position: relative;
+  top: 13px;
+  right: 17px;
   transition: opacity 0.3s;
   transition: background-image 0.4s;
   cursor: pointer;
@@ -81,4 +86,25 @@
 
 .card__like-btn_active {
   background-image: url(../images/heartfull.svg);
+}
+
+.card__like-area {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.card__like-counter {
+  width: 9px;
+  height: 13px;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 16px;
+  text-align: center;
+  color: #000000;
+  position: relative;
+  right: 16.5px;
+  top: 3px;
 }

@@ -11,14 +11,20 @@ import {
   settings,
 } from "../scripts/utils/constants.js";
 import { api } from "../scripts/components/Api.js";
+import { WarnPopup } from "../scripts/components/WarnPopup";
 
 function createCard(item) {
   const cardElement = new Card(
-    { imgTitle: item.name, imgLink: item.link },
-    "#card",
-    (item) => {
-      popupImg.open(item);
-    }
+    {
+      data: item,
+      handleImg: (item) => {
+        popupImg.open(item);
+      },
+      handleDel: (id) => {
+        delWarnPopup.open(id);
+      },
+    },
+    "#card"
   );
   return cardElement.makeCard();
 }
@@ -38,8 +44,7 @@ export const editProfile = new PopupWithForms({
   handleSubmit: () => {
     const data = editProfile.getInputValues();
     userInfo.setUserInfo(data);
-    api.patchUserInfo(data)
-    .then((res) => console.log(res));
+    api.patchUserInfo(data);
     editProfile.close();
   },
 });
@@ -48,10 +53,21 @@ editProfile.setEventListeners();
 export const addCard = new PopupWithForms({
   selector: "#addCardPopup",
   handleSubmit: (data) => {
-    gallerySection.addItem(data);
+    api.postNewCard(data).then((res) => {
+      gallerySection.addItem(res);
+    });
   },
 });
 addCard.setEventListeners();
+
+export const delWarnPopup = new WarnPopup({
+  selector: "#cardDelete",
+  handleSubmit: (id) => {
+    api.deleteCard(id);
+    document.getElementById(id).remove();
+  },
+});
+delWarnPopup.setEventListeners();
 
 const userInfo = new UserInfo({
   nameSelector: ".profile__user-name",
@@ -73,11 +89,12 @@ const enableValidation = (settings) => {
 
 enableValidation(settings);
 
-api.getUserInfo()
-.then((res) => {document.querySelector('.profile__picture').src = res.avatar;
-userInfo.setUserInfo(res)});
+api.getUserInfo().then((res) => {
+  document.querySelector(".profile__picture").src = res.avatar;
+  userInfo.setUserInfo(res);
+});
 
-api.getInitialCards().then((res) => gallerySection.renderAll(res.slice(0, 6)));
+api.getInitialCards().then((res) => gallerySection.renderAll(res));
 
 btnEditProfile.addEventListener("click", handleEditProfileBtn);
 
