@@ -32,4 +32,6 @@ https://irmo12.github.io/web_project_4/
 ### Sprint 9 features:
 
 Its time to remove all hard coded information and move to a server. Implementation using asynchronous JS, using promises.
-Added simulation of fetching a specific user, fetching that users gallery, changin users info, adding a card to gallery,
+Now all features affect the server side as well, just like a real production site. its easy to see now how information is sent and recieved from a remote database.
+
+Future upgrade ought to include proper UX for unsuccessful fetches, not just console logs.

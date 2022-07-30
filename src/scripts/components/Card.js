@@ -1,5 +1,6 @@
 import { userInfo } from "../../page/index.js";
-import { currentCard } from "../../page/index.js";
+import { api } from "./Api.js";
+
 class Card {
   constructor({ data, handleImg, handleDel }, selector) {
     this._name = data.name;
@@ -26,7 +27,7 @@ class Card {
   }
 
   makeCard() {
-    this._element = this._getTemplate().querySelector('.card');
+    this._element = this._getTemplate().querySelector(".card");
     this._img.setAttribute("src", this._src);
     this._img.setAttribute("alt", this._name);
     this._caption.textContent = this._name;
@@ -49,8 +50,13 @@ class Card {
   }
 
   _handleLikeBtn() {
+    if (this._like.classList.length == 1) {
+      api.likeClick(true, this._id).then((res) => this._likes.textContent = res.likes.length);
+    }
+    if (this._like.classList.length == 2) {
+      api.likeClick(false, this._id).then((res) => this._likes.textContent = res.likes.length);
+    }
     this._like.classList.toggle("card__like-btn_active");
   }
 }
-
 export default Card;

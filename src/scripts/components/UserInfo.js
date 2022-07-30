@@ -18,5 +18,6 @@ export default class UserInfo {
     this._nameNode.textContent = newData.name;
     this._jobNode.textContent = newData.about;
     this.id = newData._id;
+    this.meData = newData;
   }
 }
