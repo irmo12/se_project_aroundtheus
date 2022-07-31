@@ -1,5 +1,5 @@
 import { TOKEN } from "../utils/constants.js";
-import {userInfo} from "../../page/index.js"
+import { userInfo } from "../../page/index.js";
 
 class Api {
   constructor({ baseURL, headers }) {
@@ -48,7 +48,7 @@ class Api {
       .catch((err) => console.log(err));
   }
 
-  likeClick(state,id) {
+  likeClick(state, id) {
     if (state) {
       return fetch(`${this._baseURL}cards/likes/${id}`, {
         headers: this._headers,
@@ -61,10 +61,18 @@ class Api {
       return fetch(`${this._baseURL}cards/likes/${id}`, {
         headers: this._headers,
         method: "DELETE",
-      })
-        .then((res) => (res.ok ? res.json() : Promise.reject(res.statusText)))
-        .catch((err) => console.log(err));
+      });
     }
+  }
+
+  avatarChange(avatar) {
+    return fetch(`${this._baseURL}users/me/avatar`, {
+      headers: this._headers,
+      method: "PATCH",
+      body: JSON.stringify({ avatar }),
+    })
+      .then((res) => (res.ok ? res.json() : Promise.reject(res.statusText)))
+      .catch((err) => console.log(err));
   }
 }
 

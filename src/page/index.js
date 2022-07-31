@@ -8,8 +8,8 @@ import PopupWithForms from "../scripts/components/PopupWithForms.js";
 import {
   btnEditProfile,
   btnAddCard,
+  btnProfilePicture,
   settings,
-  
 } from "../scripts/utils/constants.js";
 import { api } from "../scripts/components/Api.js";
 import { WarnPopup } from "../scripts/components/WarnPopup";
@@ -39,6 +39,16 @@ const gallerySection = new Section({
 
 const popupImg = new PopupWithImages("#imgPopup");
 popupImg.setEventListeners();
+
+export const changeProfilePicture = new PopupWithForms({
+  selector: "#avatar",
+  handleSubmit: () => {
+    const link = changeProfilePicture.getInputValues().link;
+    api.avatarChange(link);
+    apiGetUserInfo();
+  },
+});
+changeProfilePicture.setEventListeners();
 
 export const editProfile = new PopupWithForms({
   selector: "#profilePopup",
@@ -90,16 +100,25 @@ const enableValidation = (settings) => {
 
 enableValidation(settings);
 
-api.getUserInfo().then((res) => {
-  document.querySelector(".profile__picture").src = res.avatar;
-  userInfo.setUserInfo(res);
-});
+function apiGetUserInfo() {
+  api.getUserInfo().then((res) => {
+    document.querySelector(".profile__picture").src = res.avatar;
+    userInfo.setUserInfo(res);
+  });
+}
+apiGetUserInfo();
 
 api.getInitialCards().then((res) => gallerySection.renderAll(res));
+
+btnProfilePicture.addEventListener("click", handleProfilePicture);
 
 btnEditProfile.addEventListener("click", handleEditProfileBtn);
 
 btnAddCard.addEventListener("click", handleAddCard);
+
+function handleProfilePicture() {
+  changeProfilePicture.open();
+}
 
 function handleEditProfileBtn() {
   const data = userInfo.getUserInfo();

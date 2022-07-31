@@ -26,7 +26,14 @@
     <main class="main">
       <section class="profile">
         <div class="profile__user">
-          <img class="profile__picture" src="#" alt="user profile image" />
+          <div class="profile__picture-wrapper">
+            <img class="profile__picture" src="#" alt="user profile image" />
+            <div class="profile__picture-overlay">
+              <div class="profile__picture-button-wrapper">
+                <button class="profile__picture-button" type="button"></button>
+              </div>
+            </div>
+          </div>
           <div class="profile__details">
             <h1 class="profile__user-name"></h1>
             <button
@@ -96,7 +103,7 @@
             <fieldset class="popup-edit__inputs">
               <input
                 type="text"
-                class="popup-edit__field popup-edit__field_place-title"
+                class="popup-edit__field popup-edit__field_title"
                 placeholder="Title"
                 name="name"
                 required
@@ -108,7 +115,7 @@
               ></span>
               <input
                 type="url"
-                class="popup-edit__field popup-edit__field_place-link"
+                class="popup-edit__field popup-edit__field_link"
                 placeholder="Image link"
                 name="link"
                 required
@@ -137,7 +144,6 @@
           <span class="img-popout__caption"></span>
         </div>
       </div>
-
       <div class="popup" id="cardDelete">
         <button
           type="button"
@@ -149,7 +155,34 @@
           <button type="submit" class="popup-edit__submit">Yes</button>
         </div>
       </div>
-
+      <div class="popup" id="avatar">
+        <button
+          type="button"
+          class="popup__container-close"
+          aria-label="close"
+        ></button>
+        <div class="popup__container">
+          <form name="avatarForm" class="popup-edit" novalidate>
+            <h2 class="popup-edit__heading">
+              Change&nbsp;profile&nbsp;picture
+            </h2>
+            <fieldset class="popup-edit__inputs">
+              <input
+                type="url"
+                class="popup-edit__field popup-edit__field_link"
+                placeholder="Image link"
+                name="link"
+                required
+              />
+              <span
+                class="popup-edit__error-msg popup-edit__error-msg_inactive"
+                id="link"
+              ></span>
+            </fieldset>
+            <button type="submit" class="popup-edit__submit">Save</button>
+          </form>
+        </div>
+      </div>
       <section class="gallery"></section>
     </main>
     <footer class="footer">

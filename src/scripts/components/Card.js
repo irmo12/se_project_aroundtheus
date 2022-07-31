@@ -51,10 +51,14 @@ class Card {
 
   _handleLikeBtn() {
     if (this._like.classList.length == 1) {
-      api.likeClick(true, this._id).then((res) => this._likes.textContent = res.likes.length);
+      api
+        .likeClick(true, this._id)
+        .then((res) => (this._likes.textContent = res.likes.length));
     }
     if (this._like.classList.length == 2) {
-      api.likeClick(false, this._id).then((res) => this._likes.textContent = res.likes.length);
+      api
+        .likeClick(false, this._id)
+        .then((res) => (this._likes.textContent = res.likes.length));
     }
     this._like.classList.toggle("card__like-btn_active");
   }

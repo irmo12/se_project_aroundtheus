@@ -19,6 +19,7 @@
 
 .popup__container {
   max-width: 430px;
+  min-width: 430px;
   display: flex;
   flex-flow: column nowrap;
   align-items: center;
@@ -84,6 +85,7 @@
 @media screen and (max-width: 796px) {
   .popup__container {
     max-width: 282px;
+    min-width: 260px;
     padding: 0 22px;
   }
   .popup__container-close {

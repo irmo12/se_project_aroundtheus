@@ -15,14 +15,62 @@
   column-gap: 30px;
 }
 
+.profile__picture-wrapper {
+  display: inline-block;
+  position: relative;
+}
+
+.profile__picture-wrapper:hover .profile__picture-overlay {
+  visibility: visible;
+  opacity: 1;
+}
+
+.profile__picture-overlay {
+  opacity: 0;
+  visibility: hidden;
+  transition: 0.3s ease all;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.6);
+}
+
+.profile__picture-overlay .profile__picture-button-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  white-space: nowrap;
+}
+
+.profile__picture-overlay .profile__picture-button {
+  width: 120px;
+  height: 120px;
+  display: inline-block;
+  background: transparent;
+  border-radius: 50%;
+  background-image: url("../images/penlarge.svg");
+  background-repeat: no-repeat;
+  border: none;
+  object-fit: cover;
+  background-position: center;
+  cursor: pointer;
+}
+
 .profile__picture {
   background-color: #c4c4c4;
+  position: relative;
   border-radius: 50%;
-  justify-self: flex-start;
-  align-self: flex-start;
   height: 120px;
   width: 120px;
   object-fit: cover;
+  transition: opacity ease-in-out 2s;
+  opacity: 1;
+}
+
+.profile__picture:hover .profile__picture-button {
+  opacity: 1;
 }
 
 .profile__details {
