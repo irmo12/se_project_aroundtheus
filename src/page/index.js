@@ -106,9 +106,12 @@ function apiGetUserInfo() {
     userInfo.setUserInfo(res);
   });
 }
-apiGetUserInfo();
 
-api.getInitialCards().then((res) => gallerySection.renderAll(res));
+api.promiseAll().then((res) => {;
+  document.querySelector(".profile__picture").src = res[0].avatar;
+  userInfo.setUserInfo(res[0]);
+  gallerySection.renderAll(res[1]);
+});
 
 btnProfilePicture.addEventListener("click", handleProfilePicture);
 

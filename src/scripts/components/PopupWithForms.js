@@ -13,6 +13,9 @@ export default class PopupWithForms extends Popup {
     this._inputFields = [
       ...this._form.querySelectorAll(FORM_INPUT_FIELD_SELECTOR),
     ];
+    this._submitBtn = this._modal
+      .querySelector(".popup-edit__submit");
+      this._btnInitText = this._submitBtn.textContent;
   }
 
   getInputValues() {
@@ -24,6 +27,7 @@ export default class PopupWithForms extends Popup {
   }
 
   open(data) {
+    this._submitBtn.textContent = this._btnInitText
     if (data) this._setInputValues(data);
     super.open();
   }
@@ -41,6 +45,7 @@ export default class PopupWithForms extends Popup {
   _handlerWithForm(evt) {
     {
       evt.preventDefault();
+      this._submitBtn.textContent = "Saving...";
       this._handleSubmit(this.getInputValues());
       this.close();
     }

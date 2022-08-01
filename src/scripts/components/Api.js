@@ -74,6 +74,10 @@ class Api {
       .then((res) => (res.ok ? res.json() : Promise.reject(res.statusText)))
       .catch((err) => console.log(err));
   }
+
+  promiseAll() {
+    return Promise.all([api.getUserInfo(), api.getInitialCards()]);
+  }
 }
 
 export const api = new Api({
