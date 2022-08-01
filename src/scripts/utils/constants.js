@@ -8,7 +8,7 @@ const settings = {
   submitButtonSelector: ".popup-edit__submit",
   inactiveButtonClass: "",
   inputErrorClass: "popup-edit__field_error",
-  errorClass: "popup-edit__error-msg_inactive",
+  errorClass: "popup-edit__error-msg-inactive",
 };
 
 export { btnEditProfile, btnAddCard, settings, TOKEN, btnProfilePicture };
