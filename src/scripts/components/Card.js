@@ -57,8 +57,9 @@ class Card {
     }
     if (this._like.classList.length == 2) {
       api
-        .likeClick(false, this._id)
-        .then((res) => (this._likes.textContent = res.likes.length));
+        .likeClick(false, this._id);
+        api.getInitialCards()
+        .then((res) => this._likes.textContent = res.find(x => x._id === this._id).likes.length);
     }
     this._like.classList.toggle("card__like-btn_active");
   }

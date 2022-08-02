@@ -19,6 +19,12 @@ class Api {
       .catch((err) => console.log(err));
   }
 
+  // getSingleCard(id) {
+  //   return fetch(`${this._baseURL}/cards/${id}`, { headers: this._headers })
+  //   .then((res) => (res.ok ? res.json() : Promise.reject(res.statusText)))
+  //   .catch((err) => console.log(err));
+  // }
+
   patchUserInfo(data) {
     fetch(`${this._baseURL}users/me`, {
       method: "PATCH",
