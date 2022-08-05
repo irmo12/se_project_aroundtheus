@@ -1,5 +1,5 @@
 import { userInfo } from "../../page/index.js";
-import { api } from "./Api.js";
+import { api } from "../utils/Api.js";
 
 class Card {
   constructor({ data, handleImg, handleDel }, selector) {

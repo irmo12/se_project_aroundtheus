@@ -12,13 +12,13 @@ class Api {
 
   getUserInfo() {
     return fetch(`${this._baseURL}/users/me`, { headers: this._headers }).then(
-      this._processResponse(res)
+      (res) => this._processResponse(res)
     );
   }
 
   getInitialCards() {
     return fetch(`${this._baseURL}/cards`, { headers: this._headers }).then(
-      this._processResponse(res)
+      (res) => this._processResponse(res)
     );
   }
 
@@ -27,7 +27,7 @@ class Api {
       method: "PATCH",
       headers: this._headers,
       body: JSON.stringify(data),
-    }).then(this._processResponse(res));
+    }).then((res) => this._processResponse(res));
   }
 
   postNewCard(data) {
@@ -35,28 +35,28 @@ class Api {
       headers: this._headers,
       method: "POST",
       body: JSON.stringify(data),
-    }).then(this._processResponse(res));
+    }).then((res) => this._processResponse(res));
   }
 
   deleteCard(id) {
     return fetch(`${this._baseURL}/cards/${id}`, {
       headers: this._headers,
       method: "DELETE",
-    }).then(this._processResponse(res));
+    }).then((res) => this._processResponse(res));
   }
 
   addLike(id) {
     return fetch(`${this._baseURL}cards/likes/${id}`, {
       headers: this._headers,
       method: "PUT",
-    }).then(this._processResponse(res));
+    }).then((res) => this._processResponse(res));
   }
 
   removeLike(id) {
-    return fetch(` ${this._baseURL}cards/likes/${id}`, {
+    return fetch(`${this._baseURL}cards/likes/${id}`, {
       headers: this._headers,
       method: "DELETE",
-    }).then(this._processResponse(res));
+    }).then((res) => this._processResponse(res));
   }
 
   changeAvatar(avatar) {
@@ -64,7 +64,7 @@ class Api {
       headers: this._headers,
       method: "PATCH",
       body: JSON.stringify({ avatar }),
-    }).then(this._processResponse(res));
+    }).then((res) => this._processResponse(res));
   }
 
   getInitialData() {

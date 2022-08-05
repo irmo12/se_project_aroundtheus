@@ -11,7 +11,7 @@ import {
   btnProfilePicture,
   settings,
 } from "../scripts/utils/constants.js";
-import { api } from "../scripts/components/Api.js";
+import { api } from "../scripts/utils/Api.js";
 import { WarnPopup } from "../scripts/components/WarnPopup";
 
 function createCard(card) {
@@ -107,7 +107,7 @@ const enableValidation = (settings) => {
 
 enableValidation(settings);
 
-api.promiseAll().then(([userData, cardsArray]) => {
+api.getInitialData().then(([userData, cardsArray]) => {
   userInfo.setUserInfo(userData);
   gallerySection.renderAll(cardsArray);
 });
