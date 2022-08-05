@@ -18,7 +18,7 @@ export default class PopupWithForms extends Popup {
       this._btnInitText = this._submitBtn.textContent;
   }
 
-  getInputValues() {
+  _getInputValues() {
     const inputValues = {};
     this._inputFields.forEach((field) => {
       inputValues[field.name] = field.value;
@@ -46,7 +46,7 @@ export default class PopupWithForms extends Popup {
     {
       evt.preventDefault();
       this._submitBtn.textContent = "Saving...";
-      this._handleSubmit(this.getInputValues());
+      this._handleSubmit(this._getInputValues());
       this.close();
     }
   }

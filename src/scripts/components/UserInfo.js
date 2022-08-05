@@ -4,7 +4,9 @@ export default class UserInfo {
     this._jobSelector = data.jobSelector;
     this._nameNode = document.querySelector(`${this._nameSelector}`);
     this._jobNode = document.querySelector(`${this._jobSelector}`);
+    this._pictureNode = document.querySelector(".profile__picture");
     this.id = data._id;
+    this._avatar = data.avatar;
   }
 
   getUserInfo() {
@@ -18,5 +20,7 @@ export default class UserInfo {
     this._nameNode.textContent = newData.name;
     this._jobNode.textContent = newData.about;
     this.id = newData._id;
+    this._avatar = newData.avatar;
+    this._pictureNode.src = this._avatar;
   }
 }

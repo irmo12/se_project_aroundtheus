@@ -14,15 +14,21 @@ import {
 import { api } from "../scripts/components/Api.js";
 import { WarnPopup } from "../scripts/components/WarnPopup";
 
-function createCard(item) {
+function createCard(card) {
   const cardElement = new Card(
     {
-      data: item,
-      handleImg: (item) => {
-        popupImg.open(item);
+      data: card,
+      handleImg: (card) => {
+        popupImg.open(card);
       },
       handleDel: (id) => {
-        delWarnPopup.open(id);
+        delWarnPopup.open();
+        delWarnPopup.setAction(() => {
+          api
+            .deleteCard(id)
+            .then(cardElement.remove())
+            .catch((err) => console.log(err));
+        });
       },
     },
     "#card"
@@ -31,8 +37,8 @@ function createCard(item) {
 }
 
 const gallerySection = new Section({
-  renderer: (item) => {
-    return createCard(item);
+  renderer: (card) => {
+    return createCard(card);
   },
   selector: ".gallery",
 });
@@ -40,15 +46,19 @@ const gallerySection = new Section({
 const popupImg = new PopupWithImages("#imgPopup");
 popupImg.setEventListeners();
 
-export const changeProfilePicture = new PopupWithForms({
+export const profilePicturePopup = new PopupWithForms({
   selector: "#avatar",
-  handleSubmit: () => {
-    const link = changeProfilePicture.getInputValues().link;
-    api.avatarChange(link);
-    apiGetUserInfo();
+  handleSubmit: (link) => {
+    link = link.imageLink;
+    api
+      .changeAvatar(link)
+      .then((res) => {
+        userInfo.setUserInfo(res);
+      })
+      .catch((err) => console.log(err));
   },
 });
-changeProfilePicture.setEventListeners();
+profilePicturePopup.setEventListeners();
 
 export const editProfile = new PopupWithForms({
   selector: "#profilePopup",
@@ -64,20 +74,17 @@ editProfile.setEventListeners();
 export const addCard = new PopupWithForms({
   selector: "#addCardPopup",
   handleSubmit: (data) => {
-    api.postNewCard(data).then((res) => {
-      gallerySection.addItem(res);
-    });
+    api
+      .postNewCard(data)
+      .then((res) => {
+        gallerySection.addItem(res);
+      })
+      .catch((err) => console.log(err));
   },
 });
 addCard.setEventListeners();
 
-export const delWarnPopup = new WarnPopup({
-  selector: "#cardDelete",
-  handleSubmit: (id) => {
-    api.deleteCard(id);
-    document.getElementById(id).remove();
-  },
-});
+export const delWarnPopup = new WarnPopup("#cardDelete");
 delWarnPopup.setEventListeners();
 
 const userInfo = new UserInfo({
@@ -100,17 +107,9 @@ const enableValidation = (settings) => {
 
 enableValidation(settings);
 
-function apiGetUserInfo() {
-  api.getUserInfo().then((res) => {
-    document.querySelector(".profile__picture").src = res.avatar;
-    userInfo.setUserInfo(res);
-  });
-}
-
-api.promiseAll().then((res) => {;
-  document.querySelector(".profile__picture").src = res[0].avatar;
-  userInfo.setUserInfo(res[0]);
-  gallerySection.renderAll(res[1]);
+api.promiseAll().then(([userData, cardsArray]) => {
+  userInfo.setUserInfo(userData);
+  gallerySection.renderAll(cardsArray);
 });
 
 btnProfilePicture.addEventListener("click", handleProfilePicture);
@@ -120,7 +119,7 @@ btnEditProfile.addEventListener("click", handleEditProfileBtn);
 btnAddCard.addEventListener("click", handleAddCard);
 
 function handleProfilePicture() {
-  changeProfilePicture.open();
+  profilePicturePopup.open();
 }
 
 function handleEditProfileBtn() {

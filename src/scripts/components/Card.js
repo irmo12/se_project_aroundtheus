@@ -52,21 +52,25 @@ class Card {
   _handleLikeBtn() {
     if (this._like.classList.length == 1) {
       api
-        .likeClick(true, this._id)
+        .addLike(this._id)
         .then((res) => (this._likes.textContent = res.likes.length));
     }
     if (this._like.classList.length == 2) {
-      api.likeClick(false, this._id);
+      api.removeLike(this._id);
       api
         .getInitialCards()
         .then(
           (res) =>
             (this._likes.textContent = res.find(
-              (x) => x._id === this._id
+              (card) => card._id === this._id
             ).likes.length)
         );
     }
     this._like.classList.toggle("card__like-btn_active");
+  }
+
+  remove() {
+    this._element.remove();
   }
 }
 export default Card;
