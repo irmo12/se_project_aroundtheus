@@ -64,37 +64,53 @@ export const profilePicturePopup = new PopupWithForm({
   selector: "#avatar",
   handleSubmit: (link) => {
     link = link.imageLink;
+    profilePicturePopup.showLoading();
     api
       .changeAvatar(link)
       .then((res) => {
         userInfo.setUserInfo(res);
+        profilePicturePopup.close();
       })
-      .catch((err) => console.log(err));
+      .catch((err) => console.log(err))
+      .finally(profilePicturePopup.hideLoading());
   },
+  loadingBtnText: "Saving...",
 });
 profilePicturePopup.setEventListeners();
 
 export const editProfile = new PopupWithForm({
   selector: "#profilePopup",
-  handleSubmit: () => {
-     api.patchUserInfo(editProfile._getInputValues())
-    .then((res) => userInfo.setUserInfo(res))
-    .catch((err) => console.log(err))
-    .finally(editProfile.close());
+  handleSubmit: (data) => {
+    editProfile.showLoading();
+    api
+      .patchUserInfo(data)
+      .then((res) => {
+        userInfo.setUserInfo(res);
+        editProfile.close();
+      })
+      .catch((err) => console.log(err))
+      .finally(editProfile.hideLoading());
   },
+  loadingBtnText: "Saving...",
+
 });
 editProfile.setEventListeners();
 
 export const addCard = new PopupWithForm({
   selector: "#addCardPopup",
   handleSubmit: (data) => {
+    addCard.showLoading();
     api
       .postNewCard(data)
       .then((res) => {
         gallerySection.addItem(res);
+        addCard.close();
       })
-      .catch((err) => console.log(err));
+      .catch((err) => console.log(err))
+      .finally(addCard.hideLoading());
   },
+  loadingBtnText: "Saving...",
+
 });
 addCard.setEventListeners();
 

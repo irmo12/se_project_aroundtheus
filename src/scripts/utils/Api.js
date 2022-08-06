@@ -23,9 +23,9 @@ class Api {
   }
 
   patchUserInfo(data) {
-    fetch(`${this._baseURL}users/me`, {
-      method: "PATCH",
+    return fetch(`${this._baseURL}users/me`, {
       headers: this._headers,
+      method: "PATCH",
       body: JSON.stringify(data),
     }).then((res) => this._processResponse(res));
   }

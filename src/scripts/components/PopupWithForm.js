@@ -4,7 +4,7 @@ const FORM_SELECTOR = ".popup-edit";
 const FORM_INPUT_FIELD_SELECTOR = ".popup-edit__field";
 
 export default class PopupWithForm extends Popup {
-  constructor({ selector, handleSubmit }) {
+  constructor({ selector, handleSubmit, loadingBtnText }) {
     super(selector);
     this._handleSubmit = handleSubmit;
     this._handleSubmit = this._handleSubmit.bind(this);
@@ -13,9 +13,12 @@ export default class PopupWithForm extends Popup {
     this._inputFields = [
       ...this._form.querySelectorAll(FORM_INPUT_FIELD_SELECTOR),
     ];
-    this._submitBtn = this._modal
-      .querySelector(".popup-edit__submit");
-      this._btnInitText = this._submitBtn.textContent;
+    this._submitBtn = this._modal.querySelector(".popup-edit__submit");
+    this._btnInitText = this._submitBtn.textContent;
+    this._loadingBtnText = loadingBtnText;
+    console.log(this._submitBtn.textContent);
+   
+    
   }
 
   _getInputValues() {
@@ -27,7 +30,6 @@ export default class PopupWithForm extends Popup {
   }
 
   open(data) {
-    this._submitBtn.textContent = this._btnInitText
     if (data) this._setInputValues(data);
     super.open();
   }
@@ -45,11 +47,20 @@ export default class PopupWithForm extends Popup {
   _handlerWithForm(evt) {
     {
       evt.preventDefault();
-      this._submitBtn.textContent = "Saving...";
       this._handleSubmit(this._getInputValues());
-      this.close();
     }
   }
+
+  showLoading() {
+    console.log(this._submitBtn.textContent);
+       this._submitBtn.textContent = this._loadingBtnText;
+       console.log(this._submitBtn.textContent);
+  }
+
+  hideLoading() {
+    this._submitBtn.textContent = this._btnInitText;
+  }
+
   setEventListeners() {
     this._form.addEventListener("submit", this._handlerWithForm);
     super.setEventListeners();
