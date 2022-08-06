@@ -2,9 +2,9 @@ import "./index.css";
 import FormValidator from "../scripts/components/FormValidator.js";
 import Card from "../scripts/components/Card.js";
 import Section from "../scripts/components/Section.js";
-import PopupWithImages from "../scripts/components/PopupWithImages.js";
+import PopupWithImage from "../scripts/components/PopupWithImage.js";
 import UserInfo from "../scripts/components/UserInfo.js";
-import PopupWithForms from "../scripts/components/PopupWithForm.js";
+import PopupWithForm from "../scripts/components/PopupWithForm.js";
 import {
   btnEditProfile,
   btnAddCard,
@@ -57,10 +57,10 @@ const gallerySection = new Section({
   selector: ".gallery",
 });
 
-const popupImg = new PopupWithImages("#imgPopup");
+const popupImg = new PopupWithImage("#imgPopup");
 popupImg.setEventListeners();
 
-export const profilePicturePopup = new PopupWithForms({
+export const profilePicturePopup = new PopupWithForm({
   selector: "#avatar",
   handleSubmit: (link) => {
     link = link.imageLink;
@@ -74,7 +74,7 @@ export const profilePicturePopup = new PopupWithForms({
 });
 profilePicturePopup.setEventListeners();
 
-export const editProfile = new PopupWithForms({
+export const editProfile = new PopupWithForm({
   selector: "#profilePopup",
   handleSubmit: () => {
     const data = editProfile.getInputValues();
@@ -85,7 +85,7 @@ export const editProfile = new PopupWithForms({
 });
 editProfile.setEventListeners();
 
-export const addCard = new PopupWithForms({
+export const addCard = new PopupWithForm({
   selector: "#addCardPopup",
   handleSubmit: (data) => {
     api
