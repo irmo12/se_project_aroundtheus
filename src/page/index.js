@@ -77,10 +77,10 @@ profilePicturePopup.setEventListeners();
 export const editProfile = new PopupWithForm({
   selector: "#profilePopup",
   handleSubmit: () => {
-    const data = editProfile.getInputValues();
-    userInfo.setUserInfo(data);
-    api.patchUserInfo(data);
-    editProfile.close();
+     api.patchUserInfo(editProfile._getInputValues())
+    .then((res) => userInfo.setUserInfo(res))
+    .catch((err) => console.log(err))
+    .finally(editProfile.close());
   },
 });
 editProfile.setEventListeners();

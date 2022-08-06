@@ -3,7 +3,7 @@ import Popup from "./Popup.js";
 const FORM_SELECTOR = ".popup-edit";
 const FORM_INPUT_FIELD_SELECTOR = ".popup-edit__field";
 
-export default class PopupWithForms extends Popup {
+export default class PopupWithForm extends Popup {
   constructor({ selector, handleSubmit }) {
     super(selector);
     this._handleSubmit = handleSubmit;
