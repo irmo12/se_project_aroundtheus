@@ -1,8 +1,8 @@
-import { userInfo } from "../../page/index.js";
-import { api } from "../utils/Api.js";
+import { MEID } from "../utils/constants.js"
+
 
 class Card {
-  constructor({ data, handleImg, handleDel }, selector) {
+  constructor({ data, handleImg, handleDel, handleLike }, selector) {
     this._name = data.name;
     this._src = data.link;
     this._likesCount = data.likes.length;
@@ -11,6 +11,8 @@ class Card {
     this._selector = selector;
     this._hanldeImgClick = handleImg;
     this._handleDel = handleDel;
+    this._handleLikeBtn = handleLike;
+    
   }
 
   _getTemplate() {
@@ -33,7 +35,7 @@ class Card {
     this._caption.textContent = this._name;
     this._likes.textContent = this._likesCount;
     this._addListeners();
-    if (userInfo.id != this.ownerId) {
+    if (MEID.self != this.ownerId) {
       this._trash.classList.add("trash_display-none");
       this._trash.setAttribute("disabled", "");
     }
@@ -49,23 +51,17 @@ class Card {
     this._trash.addEventListener("click", () => this._handleDel(this._id));
   }
 
-  _handleLikeBtn() {
-    if (this._like.classList.length == 1) {
-      api
-        .addLike(this._id)
-        .then((res) => (this._likes.textContent = res.likes.length));
-    }
-    if (this._like.classList.length == 2) {
-      api.removeLike(this._id);
-      api
-        .getInitialCards()
-        .then(
-          (res) =>
-            (this._likes.textContent = res.find(
-              (card) => card._id === this._id
-            ).likes.length)
-        );
-    }
+  updateLikes(likes) {
+    this._likesCount = likes;
+    this._renderLikes();
+  }
+
+  _isLiked() {
+    return (!(this._like.classList.length == 1));
+  }
+
+  _renderLikes() {
+    this._likes.textContent = this._likesCount;
     this._like.classList.toggle("card__like-btn_active");
   }
 

@@ -10,6 +10,7 @@ import {
   btnAddCard,
   btnProfilePicture,
   settings,
+  MEID,
 } from "../scripts/utils/constants.js";
 import { api } from "../scripts/utils/Api.js";
 import { WarnPopup } from "../scripts/components/WarnPopup";
@@ -29,6 +30,19 @@ function createCard(card) {
             .then(cardElement.remove())
             .catch((err) => console.log(err));
         });
+      },
+      handleLike: () => {
+        if (cardElement._isLiked()) {
+          api
+            .removeLike(cardElement._id)
+            .then((response) => cardElement.updateLikes(response.likes.length))
+            .catch(console.error);
+        } else {
+          api
+            .addLike(cardElement._id)
+            .then((response) => cardElement.updateLikes(response.likes.length))
+            .catch(console.error);
+        }
       },
     },
     "#card"
@@ -109,6 +123,7 @@ enableValidation(settings);
 
 api.getInitialData().then(([userData, cardsArray]) => {
   userInfo.setUserInfo(userData);
+  MEID.self = userData._id;
   gallerySection.renderAll(cardsArray);
 });
 

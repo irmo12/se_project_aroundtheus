@@ -7,7 +7,7 @@ class Api {
   }
 
   _processResponse = (res) => {
-    res.ok ? res.json() : Promise.reject(`Error: ${res.statusText}`);
+    return res.ok ? res.json() : Promise.reject(`Error: ${res.statusText}`);
   };
 
   getUserInfo() {
