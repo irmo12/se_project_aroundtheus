@@ -4,7 +4,7 @@ import Card from "../scripts/components/Card.js";
 import Section from "../scripts/components/Section.js";
 import PopupWithImages from "../scripts/components/PopupWithImages.js";
 import UserInfo from "../scripts/components/UserInfo.js";
-import PopupWithForms from "../scripts/components/PopupWithForms.js";
+import PopupWithForms from "../scripts/components/PopupWithForm.js";
 import {
   btnEditProfile,
   btnAddCard,
