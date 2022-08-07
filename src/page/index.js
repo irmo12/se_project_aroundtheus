@@ -99,9 +99,10 @@ editProfile.setEventListeners();
 export const addCard = new PopupWithForm({
   selector: "#addCardPopup",
   handleSubmit: (data) => {
+
     addCard.showLoading();
     api
-      .postNewCard(data)
+      .postNewCard({name: data.title, link: data.imgLink})
       .then((res) => {
         gallerySection.addItem(res);
         addCard.close();
