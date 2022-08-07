@@ -1,5 +1,7 @@
 # Project 4: Around The U.S.
 
+Take a look at: https://irmo12.github.io/web_project_4/
+
 ### Description
 
 First js project - first part. this project will be a page that enables a user to place images in a gallery.
