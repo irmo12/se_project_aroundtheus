@@ -20,7 +20,14 @@ export default class UserInfo {
     this._nameNode.textContent = newData.name;
     this._jobNode.textContent = newData.about;
     this.id = newData._id;
-    this._pictureNode.src = newData.avatar;
-    
+    this.setUserAvatar(newData.avatar);
+  }
+
+  getUserAvatar() {
+    return this._avatar;
+  }
+
+  setUserAvatar(avatar) {
+    this._pictureNode.src = avatar;
   }
 }

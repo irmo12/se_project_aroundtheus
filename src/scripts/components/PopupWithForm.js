@@ -16,9 +16,7 @@ export default class PopupWithForm extends Popup {
     this._submitBtn = this._modal.querySelector(".popup-edit__submit");
     this._btnInitText = this._submitBtn.textContent;
     this._loadingBtnText = loadingBtnText;
-    console.log(this._submitBtn.textContent);
-   
-    
+    console.log(this._btnInitText);
   }
 
   _getInputValues() {
@@ -52,9 +50,7 @@ export default class PopupWithForm extends Popup {
   }
 
   showLoading() {
-    console.log(this._submitBtn.textContent);
-       this._submitBtn.textContent = this._loadingBtnText;
-       console.log(this._submitBtn.textContent);
+    this._submitBtn.textContent = this._loadingBtnText;
   }
 
   hideLoading() {
