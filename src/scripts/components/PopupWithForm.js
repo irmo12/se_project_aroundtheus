@@ -16,13 +16,12 @@ export default class PopupWithForm extends Popup {
     this._submitBtn = this._modal.querySelector(".popup-edit__submit");
     this._btnInitText = this._submitBtn.textContent;
     this._loadingBtnText = loadingBtnText;
-    console.log(this._btnInitText);
   }
 
   _getInputValues() {
     const inputValues = {};
     this._inputFields.forEach((field) => {
-      inputValues[field.name] = field.value;
+      inputValues[field.id] = field.value;
     });
     return inputValues;
   }
@@ -35,7 +34,7 @@ export default class PopupWithForm extends Popup {
   _setInputValues(values) {
     this._inputFields.forEach((field) => {
       Object.keys(values).forEach((key) => {
-        if (field.name === key) {
+        if (field.id === key) {
           field.value = values[key];
         }
       });
