@@ -65,7 +65,7 @@ export const profilePicturePopup = new PopupWithForm({
   handleSubmit: (link) => {
     profilePicturePopup.showLoading();
     api
-      .changeAvatar(link.link)
+      .changeAvatar(link.avatarLink)
       .then((res) => {
         userInfo.setUserInfo(res);
         profilePicturePopup.close();
