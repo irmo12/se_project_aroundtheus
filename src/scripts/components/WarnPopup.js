@@ -7,7 +7,7 @@ export class WarnPopup extends Popup {
 
   setEventListeners() {
     this._modal
-      .querySelector(".popup-edit__submit")
+      .querySelector(".popup__form-submit")
       .addEventListener("mouseup", (evt) => {
         this._handleSubmit(evt);
         this.close();

@@ -1,7 +1,7 @@
 import Popup from "./Popup.js";
 
-const FORM_SELECTOR = ".popup-edit";
-const FORM_INPUT_FIELD_SELECTOR = ".popup-edit__field";
+const FORM_SELECTOR = ".popup__form";
+const FORM_INPUT_FIELD_SELECTOR = ".popup__form-field";
 
 export default class PopupWithForm extends Popup {
   constructor({ selector, handleSubmit, loadingBtnText }) {
@@ -13,7 +13,7 @@ export default class PopupWithForm extends Popup {
     this._inputFields = [
       ...this._form.querySelectorAll(FORM_INPUT_FIELD_SELECTOR),
     ];
-    this._submitBtn = this._modal.querySelector(".popup-edit__submit");
+    this._submitBtn = this._modal.querySelector(".popup__form-submit");
     this._btnInitText = this._submitBtn.textContent;
     this._loadingBtnText = loadingBtnText;
   }
@@ -23,7 +23,6 @@ export default class PopupWithForm extends Popup {
     this._inputFields.forEach((field) => {
       inputValues[field.id] = field.value;
     });
-    console.log(inputValues);
     return inputValues;
   }
 

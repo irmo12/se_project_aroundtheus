@@ -63,10 +63,9 @@ popupImg.setEventListeners();
 export const profilePicturePopup = new PopupWithForm({
   selector: "#avatar",
   handleSubmit: (link) => {
-    link = link.imageLink;
     profilePicturePopup.showLoading();
     api
-      .changeAvatar(link)
+      .changeAvatar(link.link)
       .then((res) => {
         userInfo.setUserInfo(res);
         profilePicturePopup.close();
@@ -92,17 +91,15 @@ export const editProfile = new PopupWithForm({
       .finally(editProfile.hideLoading());
   },
   loadingBtnText: "Saving...",
-
 });
 editProfile.setEventListeners();
 
 export const addCard = new PopupWithForm({
   selector: "#addCardPopup",
   handleSubmit: (data) => {
-
     addCard.showLoading();
     api
-      .postNewCard({name: data.title, link: data.imgLink})
+      .postNewCard({ name: data.title, link: data.imgLink })
       .then((res) => {
         gallerySection.addItem(res);
         addCard.close();
@@ -111,7 +108,6 @@ export const addCard = new PopupWithForm({
       .finally(addCard.hideLoading());
   },
   loadingBtnText: "Saving...",
-
 });
 addCard.setEventListeners();
 

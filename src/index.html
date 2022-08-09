@@ -57,12 +57,12 @@
           aria-label="close"
         ></button>
         <div class="popup__container">
-          <form name="editProfileForm" class="popup-edit" novalidate>
-            <h2 class="popup-edit__heading">Edit&nbsp;profile</h2>
-            <fieldset class="popup-edit__inputs">
+          <form name="editProfileForm" class="popup__form" novalidate>
+            <h2 class="popup__form-heading">Edit&nbsp;profile</h2>
+            <fieldset class="popup__form-inputs">
               <input
                 type="text"
-                class="popup-edit__field popup-edit__field-user-name"
+                class="popup__form-field popup__form-field_user-name"
                 placeholder="Name"
                 name="profileName"
                 required
@@ -71,12 +71,12 @@
                 id="name"
               />
               <span
-                class="popup-edit__error-msg popup-edit__error-msg-inactive"
+                class="popup__form-error-msg popup__form-error-msg_inactive"
                 id="profileName"
               ></span>
               <input
                 type="text"
-                class="popup-edit__field popup-edit__field-user-about"
+                class="popup__form-field popup__form-field_user-about"
                 placeholder="About me"
                 name="profileAbout"
                 required
@@ -85,11 +85,11 @@
                 id="about"
               />
               <span
-                class="popup-edit__error-msg popup-edit__error-msg-inactive"
+                class="popup__form-error-msg popup__form-error-msg_inactive"
                 id="profileAbout"
               ></span>
             </fieldset>
-            <button type="submit" class="popup-edit__submit">Save</button>
+            <button type="submit" class="popup__form-submit">Save</button>
           </form>
         </div>
       </div>
@@ -100,12 +100,12 @@
           aria-label="close"
         ></button>
         <div class="popup__container">
-          <form name="addCardForm" class="popup-edit" novalidate>
-            <h2 class="popup-edit__heading">New&nbsp;place</h2>
-            <fieldset class="popup-edit__inputs">
+          <form name="addCardForm" class="popup__form" novalidate>
+            <h2 class="popup__form-heading">New&nbsp;place</h2>
+            <fieldset class="popup__form-inputs">
               <input
                 type="text"
-                class="popup-edit__field"
+                class="popup__form-field"
                 placeholder="Title"
                 name="placeName"
                 required
@@ -113,23 +113,23 @@
                 id="title"
               />
               <span
-                class="popup-edit__error-msg popup-edit__error-msg-inactive"
+                class="popup__form-error-msg popup__form__error-msg_inactive"
                 id="placeName"
               ></span>
               <input
                 type="url"
-                class="popup-edit__field"
+                class="popup__form-field"
                 placeholder="Image link"
                 name="link"
                 required
                 id="imgLink"
               />
               <span
-                class="popup-edit__error-msg popup-edit__error-msg-inactive"
+                class="popup__form-error-msg popup__form-error-msg_inactive"
                 id="link"
               ></span>
             </fieldset>
-            <button type="submit" class="popup-edit__submit" disabled>
+            <button type="submit" class="popup__form-submit" disabled>
               Create
             </button>
           </form>
@@ -155,8 +155,8 @@
           aria-label="close"
         ></button>
         <div class="popup__container popup__container-delete">
-          <h2 class="popup-edit__heading">Are you sure?</h2>
-          <button type="submit" class="popup-edit__submit">Yes</button>
+          <h2 class="popup__form-heading">Are you sure?</h2>
+          <button type="submit" class="popup__form-submit">Yes</button>
         </div>
       </div>
       <div class="popup" id="avatar">
@@ -166,24 +166,25 @@
           aria-label="close"
         ></button>
         <div class="popup__container">
-          <form name="avatarForm" class="popup-edit" novalidate>
-            <h2 class="popup-edit__heading">
+          <form name="avatarForm" class="popup__form" novalidate>
+            <h2 class="popup__form-heading">
               Change&nbsp;profile&nbsp;picture
             </h2>
-            <fieldset class="popup-edit__inputs">
+            <fieldset class="popup__form-inputs">
               <input
                 type="url"
-                class="popup-edit__field"
+                class="popup__form-field"
                 placeholder="Image link"
                 name="imageLink"
                 required
+                id="link"
               />
               <span
-                class="popup-edit__error-msg popup-edit__error-msg-inactive"
+                class="popup__form-error-msg popup__form-error-msg_inactive"
                 id="imageLink"
               ></span>
             </fieldset>
-            <button type="submit" class="popup-edit__submit">Save</button>
+            <button type="submit" class="popup__form-submit">Save</button>
           </form>
         </div>
       </div>
