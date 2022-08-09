@@ -24,12 +24,12 @@ function createCard(card) {
       },
       handleDel: (id) => {
         delWarnPopup.open();
-        delWarnPopup.setAction(() => {
+        delWarnPopup.setAction(() => setTimeout(() => {
           api
             .deleteCard(id)
             .then(cardElement.remove())
             .catch((err) => console.log(err));
-        });
+        }));
       },
       handleLike: () => {
         if (cardElement._isLiked()) {
@@ -71,7 +71,7 @@ export const profilePicturePopup = new PopupWithForm({
         profilePicturePopup.close();
       })
       .catch((err) => console.log(err))
-      .finally(profilePicturePopup.hideLoading());
+      .finally(() => setTimeout(() => profilePicturePopup.hideLoading(), 500));
   },
   loadingBtnText: "Saving...",
 });
@@ -88,7 +88,7 @@ export const editProfile = new PopupWithForm({
         editProfile.close();
       })
       .catch((err) => console.log(err))
-      .finally(editProfile.hideLoading());
+      .finally(() => setTimeout(() => editProfile.hideLoading(), 500));
   },
   loadingBtnText: "Saving...",
 });
@@ -105,7 +105,7 @@ export const addCard = new PopupWithForm({
         addCard.close();
       })
       .catch((err) => console.log(err))
-      .finally(addCard.hideLoading());
+      .finally(() => setTimeout(() => addCard.hideLoading(), 500));
   },
   loadingBtnText: "Saving...",
 });
