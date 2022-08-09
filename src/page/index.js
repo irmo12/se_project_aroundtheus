@@ -36,12 +36,12 @@ function createCard(card) {
           api
             .removeLike(cardElement._id)
             .then((response) => cardElement.updateLikes(response.likes.length))
-            .catch(console.error);
+            .catch((err) => console.log(err));
         } else {
           api
             .addLike(cardElement._id)
             .then((response) => cardElement.updateLikes(response.likes.length))
-            .catch(console.error);
+            .catch((err) => console.log(err));
         }
       },
     },
