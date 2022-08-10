@@ -1,17 +1,15 @@
-import { MEID } from "../utils/constants.js"
-
-
 class Card {
-  constructor({ data, handleImg, handleDel, handleLike }, selector) {
+  constructor({ data, handleImg, handleDel, handleLike, userId }, selector) {
     this._name = data.name;
     this._src = data.link;
-    this._likesCount = data.likes.length;
+    this._likesArr = data.likes;
     this._id = data._id;
     this.ownerId = data.owner._id;
     this._selector = selector;
     this._hanldeImgClick = handleImg;
     this._handleDel = handleDel;
     this._handleLikeBtn = handleLike;
+    this._userId = userId;
     
   }
 
@@ -19,17 +17,16 @@ class Card {
     const cardElement = document
       .querySelector(`${this._selector}`)
       .content.cloneNode(true);
-    this._img = cardElement.querySelector(".card__img");
-    this._caption = cardElement.querySelector(".card__caption");
-    this._trash = cardElement.querySelector(".card__trash");
-    this._like = cardElement.querySelector(".card__like-btn");
-    this._likes = cardElement.querySelector(".card__like-counter");
-
     return cardElement;
   }
 
   makeCard() {
     this._element = this._getTemplate().querySelector(".card");
+    this._img = cardElement.querySelector(".card__img");
+    this._caption = cardElement.querySelector(".card__caption");
+    this._trash = cardElement.querySelector(".card__trash");
+    this._like = cardElement.querySelector(".card__like-btn");
+    this._likes = cardElement.querySelector(".card__like-counter");
     this._img.setAttribute("src", this._src);
     this._img.setAttribute("alt", this._name);
     this._caption.textContent = this._name;

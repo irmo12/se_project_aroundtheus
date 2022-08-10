@@ -25,10 +25,12 @@ function createCard(card) {
       handleDel: (id) => {
         delWarnPopup.open();
         delWarnPopup.setAction(() => {
+          delWarnPopup.showLoading();
           api
             .deleteCard(id)
-            .then(cardElement.remove())
-            .catch((err) => console.log(err));
+            .then(() => cardElement.remove())
+            .catch((err) => console.log(err))
+            .finally(() => delWarnPopup.hideLoading());
         });
       },
       handleLike: () => {
@@ -51,11 +53,9 @@ function createCard(card) {
 }
 
 const gallerySection = new Section({
-  renderer: (card) => {
-    return createCard(card);
-  },
-  selector: ".gallery",
-});
+  renderer: createCard,
+  selector: ".gallery",}
+);
 
 const popupImg = new PopupWithImage("#imgPopup");
 popupImg.setEventListeners();
@@ -71,7 +71,7 @@ export const profilePicturePopup = new PopupWithForm({
         profilePicturePopup.close();
       })
       .catch((err) => console.log(err))
-      .finally(profilePicturePopup.hideLoading());
+      .finally(() => profilePicturePopup.hideLoading());
   },
   loadingBtnText: "Saving...",
 });
@@ -88,30 +88,33 @@ export const editProfile = new PopupWithForm({
         editProfile.close();
       })
       .catch((err) => console.log(err))
-      .finally(editProfile.hideLoading());
+      .finally(() => editProfile.hideLoading());
   },
   loadingBtnText: "Saving...",
 });
 editProfile.setEventListeners();
 
-export const addCard = new PopupWithForm({
+export const addCardPopup = new PopupWithForm({
   selector: "#addCardPopup",
   handleSubmit: (data) => {
-    addCard.showLoading();
+    addCardPopup.showLoading();
     api
       .postNewCard({ name: data.title, link: data.imgLink })
       .then((res) => {
         gallerySection.addItem(res);
-        addCard.close();
+        addCardPopup.close();
       })
       .catch((err) => console.log(err))
-      .finally(addCard.hideLoading());
+      .finally(() => addCardPopup.hideLoading());
   },
   loadingBtnText: "Saving...",
 });
-addCard.setEventListeners();
+addCardPopup.setEventListeners();
 
-export const delWarnPopup = new WarnPopup("#cardDelete");
+export const delWarnPopup = new WarnPopup({
+  selector: "#cardDelete",
+  loadingBtnText: "Deleting...",
+});
 delWarnPopup.setEventListeners();
 
 const userInfo = new UserInfo({
@@ -158,7 +161,7 @@ function handleEditProfileBtn() {
 
 function handleAddCard() {
   formValidators["addCardForm"].resetValidation();
-  addCard.open();
+  addCardPopup.open();
 }
 
 export { userInfo, formValidators };
