@@ -37,18 +37,18 @@ function createCard(card) {
         });
       },
       handleLike: () => {
-        if (cardElement._isLiked()) {
+        if (cardElement.isLiked()) {
           api
             .removeLike(cardElement._id)
             .then((response) => {
-              cardElement._updateLikes(response.likes);
+              cardElement.updateLikes(response.likes);
             })
             .catch(console.error);
         } else {
           api
             .addLike(cardElement._id)
             .then((response) => {
-              cardElement._updateLikes(response.likes);
+              cardElement.updateLikes(response.likes);
             })
             .catch(console.error);
         }
@@ -67,42 +67,42 @@ const gallerySection = new Section({
 const popupImg = new PopupWithImage("#imgPopup");
 popupImg.setEventListeners();
 
-export const profilePicturePopup = new PopupWithForm({
+const profilePicturePopup = new PopupWithForm({
   selector: "#avatar",
   handleSubmit: (link) => {
     profilePicturePopup.showLoading();
     api
       .changeAvatar(link.avatarLink)
       .then((res) => {
-        userInfo.setUserInfo(res);
+        userInfo.setUserAvatar(res.avatar);
         profilePicturePopup.close();
       })
       .catch((err) => console.log(err))
-      .finally(() =>  profilePicturePopup.hideLoading());
+      .finally(() => profilePicturePopup.hideLoading());
   },
   loadingBtnText: "Saving...",
 });
 profilePicturePopup.setEventListeners();
 
-export const editProfile = new PopupWithForm({
+const editProfilePopup = new PopupWithForm({
   selector: "#profilePopup",
   handleSubmit: (data) => {
-    editProfile.showLoading();
+    editProfilePopup.showLoading();
     api
       .patchUserInfo(data)
       .then((res) => {
         userInfo.setUserInfo(res);
-        editProfile.close();
+        editProfilePopup.close();
       })
       .catch((err) => console.log(err))
 
-      .finally(() => editProfile.hideLoading());
+      .finally(() => editProfilePopup.hideLoading());
   },
   loadingBtnText: "Saving...",
 });
-editProfile.setEventListeners();
+editProfilePopup.setEventListeners();
 
-export const addCardPopup = new PopupWithForm({
+const addCardPopup = new PopupWithForm({
   selector: "#addCardPopup",
   handleSubmit: (data) => {
     addCardPopup.showLoading();
@@ -114,13 +114,13 @@ export const addCardPopup = new PopupWithForm({
       })
       .catch((err) => console.log(err))
 
-      .finally(() =>  addCard.hideLoading());
+      .finally(() => addCard.hideLoading());
   },
   loadingBtnText: "Saving...",
 });
 addCardPopup.setEventListeners();
 
-export const delWarnPopup = new WarnPopup({
+const delWarnPopup = new WarnPopup({
   selector: "#cardDelete",
   loadingBtnText: "Deleting...",
 });
@@ -165,7 +165,7 @@ function handleProfilePicture() {
 
 function handleEditProfileBtn() {
   const data = userInfo.getUserInfo();
-  editProfile.open(data);
+  editProfilePopup.open(data);
   formValidators["editProfileForm"].resetValidation();
 }
 

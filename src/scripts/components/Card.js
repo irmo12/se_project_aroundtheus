@@ -29,11 +29,10 @@ class Card {
     this._img.setAttribute("src", this._src);
     this._img.setAttribute("alt", this._name);
     this._caption.textContent = this._name;
-    this._updateLikes(this._likesArr);
+    this._renderLikes();
     this._addListeners();
     if (this._userId != this.ownerId) {
-      this._trash.classList.add("trash_display-none");
-      this._trash.setAttribute("disabled", "");
+      this._trash.remove();
     }
     this._element.setAttribute("id", this._id);
     return this._element;
@@ -47,19 +46,18 @@ class Card {
     this._trash.addEventListener("click", () => this._handleDel(this._id));
   }
 
-  _updateLikes(likes) {
+  updateLikes(likes) {
     this._likesArr=likes;
-    this._likesCount = likes.length;
     this._renderLikes();
   }
 
-  _isLiked() {
+  isLiked() {
     return this._likesArr.some((item) => item._id === this._userId);
   }
 
   _renderLikes() {
-    this._likes.textContent = this._likesCount;
-    if (this._isLiked()) {
+    this._likes.textContent = this._likesArr.length;
+    if (this.isLiked()) {
       this._like.classList.add("card__like-btn_active");
     } else {
       this._like.classList.remove("card__like-btn_active");
