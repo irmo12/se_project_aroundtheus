@@ -33,7 +33,7 @@ function createCard(card) {
               delWarnPopup.close();
             })
             .catch((err) => console.log(err))
-            .finally(() => setTimeout(() => (delWarnPopup.hideLoading(), 500)));
+            .finally(() => setTimeout(() => (delWarnPopup.hideLoading(), 1000)));
         });
       },
       handleLike: () => {
