@@ -12,7 +12,7 @@ class Api {
 
   getUserInfo() {
     return fetch(`${this._baseURL}/users/me`, { headers: this._headers }).then(
-      (res) => this._processResponse(res)
+       this._processResponse
     );
   }
 

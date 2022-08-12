@@ -63,9 +63,9 @@ class FormValidator {
 
   _toggleBtnState() {
     if (this._hasInvalidInput(this._inputList)) {
-      this._btnElement.setAttribute("disabled", "");
+      this._btnElement.setAttribute("disabled", true);
     } else {
-      this._btnElement.removeAttribute("disabled", "");
+      this._btnElement.removeAttribute("disabled");
     }
   }
 }

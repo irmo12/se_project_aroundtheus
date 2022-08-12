@@ -37,4 +37,5 @@ export default class Popup {
     document.removeEventListener("keyup", this._handleEscKey);
     this._modal.classList.remove(POPUP_ACTIVE_CLASS);
   }
+  
 }
