@@ -10,7 +10,6 @@ import {
   btnAddCard,
   btnProfilePicture,
   settings,
-  MEID,
 } from "../scripts/utils/constants.js";
 import { api } from "../scripts/utils/Api.js";
 import { WarnPopup } from "../scripts/components/WarnPopup";
@@ -19,6 +18,7 @@ function createCard(card) {
   const cardElement = new Card(
     {
       data: card,
+      userId: userInfo.getUserId(),
       handleImg: (card) => {
         popupImg.open(card);
       },
@@ -28,7 +28,10 @@ function createCard(card) {
           delWarnPopup.showLoading();
           api
             .deleteCard(id)
-            .then(() => cardElement.remove())
+            .then(() => {
+              cardElement.remove();
+              delWarnPopup.close();
+            })
             .catch((err) => console.log(err))
             .finally(() => delWarnPopup.hideLoading());
         });
@@ -37,12 +40,16 @@ function createCard(card) {
         if (cardElement._isLiked()) {
           api
             .removeLike(cardElement._id)
-            .then((response) => cardElement.updateLikes(response.likes.length))
+            .then((response) => {
+              cardElement._updateLikes(response.likes);
+            })
             .catch(console.error);
         } else {
           api
             .addLike(cardElement._id)
-            .then((response) => cardElement.updateLikes(response.likes.length))
+            .then((response) => {
+              cardElement._updateLikes(response.likes);
+            })
             .catch(console.error);
         }
       },
@@ -54,8 +61,8 @@ function createCard(card) {
 
 const gallerySection = new Section({
   renderer: createCard,
-  selector: ".gallery",}
-);
+  selector: ".gallery",
+});
 
 const popupImg = new PopupWithImage("#imgPopup");
 popupImg.setEventListeners();
@@ -139,7 +146,8 @@ enableValidation(settings);
 
 api.getInitialData().then(([userData, cardsArray]) => {
   userInfo.setUserInfo(userData);
-  MEID.self = userData._id;
+  userInfo.setUserAvatar(userData.avatar);
+  userInfo.setUserId(userData._id);
   gallerySection.renderAll(cardsArray);
 });
 

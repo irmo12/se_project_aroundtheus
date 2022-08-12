@@ -1,11 +1,11 @@
 import Popup from "./Popup";
 
 export class WarnPopup extends Popup {
-  constructor({selector, loadingBtnText}) {
+  constructor({ selector, loadingBtnText }) {
     super(selector);
-  this._submitBtn = this._modal.querySelector(".popup__form-submit");
-  this._btnInitText = this._submitBtn.textContent;
-  this._loadingBtnText = loadingBtnText;
+    this._submitBtn = this._modal.querySelector(".popup__form-submit");
+    this._btnInitText = this._submitBtn.textContent;
+    this._loadingBtnText = loadingBtnText;
   }
 
   setAction(action) {
@@ -25,7 +25,6 @@ export class WarnPopup extends Popup {
       .querySelector(".popup__form-submit")
       .addEventListener("mouseup", (evt) => {
         this._handleSubmit(evt);
-        this.close();
       });
     super.setEventListeners();
   }
