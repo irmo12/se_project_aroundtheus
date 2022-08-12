@@ -33,7 +33,7 @@ function createCard(card) {
               delWarnPopup.close();
             })
             .catch((err) => console.log(err))
-            .finally(() => setTimeout(() => (delWarnPopup.hideLoading(), 1000)));
+            .finally(() => delWarnPopup.hideLoading());
         });
       },
       handleLike: () => {
@@ -78,7 +78,7 @@ export const profilePicturePopup = new PopupWithForm({
         profilePicturePopup.close();
       })
       .catch((err) => console.log(err))
-      .finally(() => setTimeout(() => profilePicturePopup.hideLoading(), 500));
+      .finally(() =>  profilePicturePopup.hideLoading());
   },
   loadingBtnText: "Saving...",
 });
@@ -96,7 +96,7 @@ export const editProfile = new PopupWithForm({
       })
       .catch((err) => console.log(err))
 
-      .finally(() => setTimeout(() => editProfile.hideLoading(), 500));
+      .finally(() => editProfile.hideLoading());
   },
   loadingBtnText: "Saving...",
 });
@@ -114,7 +114,7 @@ export const addCardPopup = new PopupWithForm({
       })
       .catch((err) => console.log(err))
 
-      .finally(() => setTimeout(() => addCard.hideLoading(), 500));
+      .finally(() =>  addCard.hideLoading());
   },
   loadingBtnText: "Saving...",
 });
