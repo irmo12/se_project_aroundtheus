@@ -114,7 +114,7 @@ const addCardPopup = new PopupWithForm({
       })
       .catch((err) => console.log(err))
 
-      .finally(() => addCard.hideLoading());
+      .finally(() => addCardPopup.hideLoading());
   },
   loadingBtnText: "Saving...",
 });
@@ -160,6 +160,7 @@ btnEditProfile.addEventListener("click", handleEditProfileBtn);
 btnAddCard.addEventListener("click", handleAddCard);
 
 function handleProfilePicture() {
+  formValidators['avatarForm'].resetValidation();
   profilePicturePopup.open();
 }
 

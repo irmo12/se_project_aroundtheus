@@ -47,7 +47,7 @@ class Card {
   }
 
   updateLikes(likes) {
-    this._likesArr=likes;
+    this._likesArr = likes;
     this._renderLikes();
   }
 
